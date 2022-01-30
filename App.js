@@ -1,11 +1,11 @@
-
-import { StyleSheet, Text, SafeAreaView } from 'react-native';
-import SignInScreen from './src/screens/SignInScreen';
+import { StyleSheet, Text, SafeAreaView } from "react-native";
+import SignInScreen from "./src/screens/SignInScreen";
+import Navigation from "./src/navigation";
 // View -> UIVIEW
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <SignInScreen/>
+      <Navigation />
     </SafeAreaView>
   );
 }
@@ -13,7 +13,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2A3950'
-
+    backgroundColor: "#2A3950",
   },
 });

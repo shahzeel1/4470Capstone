@@ -16,13 +16,17 @@ import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
+import { useNavigation } from "@react-navigation/native";
 
 const SignInScreen = () => {
   const { height } = useWindowDimensions();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigation = useNavigation();
   const onSignInPressed = () => {};
-  const onForgotPasswordPressed = () => {};
+  const onForgotPasswordPressed = () => {
+    navigation.navigate("ForgotPassword");
+  };
 
   let [fontsLoaded] = useFonts({
     Prompt_500Medium,
@@ -68,9 +72,15 @@ const SignInScreen = () => {
           />
           <CustomButton
             text="Forgot Password"
-            onPress={onSignInPressed}
+            onPress={onForgotPasswordPressed}
             type="TERTIARY"
             style={{ padding: 20, alignSelf: "center" }}
+          />
+          <CustomButton
+            text="Don't have an account? Sign Up"
+            onPress={onSignInPressed}
+            type="TERTIARY"
+            style={{ padding: 10, alignSelf: "center" }}
           />
         </View>
       </TouchableWithoutFeedback>
@@ -81,12 +91,13 @@ const SignInScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#2A3950",
   },
   inner: {
     padding: 24,
     flex: 1,
     justifyContent: "flex-end",
-    marginTop: "20%",
+    marginTop: "50%",
   },
   logo: {
     width: "70%",
