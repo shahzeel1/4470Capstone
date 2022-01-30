@@ -1,9 +1,12 @@
+import { Prompt_500Medium } from '@expo-google-fonts/prompt';
 import React from 'react';
-import {View, Image, TextInput, StyleSheet} from 'react-native';
+import {View, Image, TextInput, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard} from 'react-native';
+import { isEnabled, setEnabled } from 'react-native/Libraries/Performance/Systrace';
 
 const CustomInput = ({image, value, setValue, placeholder, secureTextEntry}) => {
   return (
-    <View style={styles.container}>
+  
+    <View  style={styles.container}>
       <Image source = {image} style = {styles.icon}/>
       <TextInput
         value={value}
@@ -18,16 +21,20 @@ const CustomInput = ({image, value, setValue, placeholder, secureTextEntry}) => 
 };
 
 const styles = StyleSheet.create({
+ 
   container: {
     width: '100%',
     height: '14%',
     flexDirection: 'row',
-    marginVertical: 5,
+    marginVertical: 5
     
   },
   input: {
     height: '100%',
-    paddingLeft: 10
+    paddingLeft: 10,
+    color: 'white',
+    fontFamily: 'Prompt_500Medium'
+
     
   },
   icon: {
