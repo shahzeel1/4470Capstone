@@ -5,8 +5,8 @@ import emailImage from '../../../assets/images/email2.png';
 import passwordImage from '../../../assets/images/padlock.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
-
-  
+import { useFonts, Prompt_500Medium } from '@expo-google-fonts/prompt';
+import AppLoading from 'expo-app-loading'; 
 
 
 
@@ -22,6 +22,14 @@ const SignInScreen = () => {
     {
 
     }
+
+    let [fontsLoaded] = useFonts({
+        Prompt_500Medium
+      });
+    
+      if (!fontsLoaded) {
+        return <AppLoading />;
+      }
 
     
 
@@ -81,12 +89,13 @@ const styles = StyleSheet.create({
     {
         width: '70%',
         maxWidth: 300,
-        maxHeight: 200
+        maxHeight: 200,
+        marginTop: 30
     },
     h1:
     {
         color: "#FFFFFF",
-        fontFamily: 'Prompt',
+        fontFamily: 'Prompt_500Medium',
         fontSize: 39,
         textAlign: 'left',
         paddingLeft: 20,
