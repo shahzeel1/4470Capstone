@@ -55,7 +55,7 @@ const SignInScreen = () => {
             placeholder="EMAIL"
             value={username}
             setValue={setUsername}
-            style={{ padding: 30, alignSelf: "center" }}
+            secureTextEntry={false}
           />
           <CustomInput
             image={passwordImage}
@@ -63,7 +63,6 @@ const SignInScreen = () => {
             value={password}
             setValue={setPassword}
             secureTextEntry={true}
-            style={{ padding: 30, alignSelf: "center" }}
           />
           <CustomButton
             text="LOGIN"
@@ -112,12 +111,10 @@ const styles = StyleSheet.create({
     fontSize: 39,
     textAlign: "left",
     paddingLeft: 30,
-    paddingBottom: 10,
     paddingTop: 30,
   },
   h2: {
     paddingLeft: 30,
-    paddingTop: 10,
     fontFamily: "Prompt_500Medium",
     fontSize: 15,
     color: "#0F6BAC",
