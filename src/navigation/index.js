@@ -4,12 +4,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import SignInScreen from "../screens/SignInScreen";
-/*import SignUpScreen from "../screens/SignUpScreen";
-import ConfirmEmailScreen from "../screens/ConfirmEmailScreen";*/
 import ForgotPasswordScreen from "../screens/ForgotPasswordScreen";
 import ResetConfirmation from "../screens/ResetConfirmation";
-/*import NewPasswordScreen from "../screens/NewPasswordScreen";
-import HomeScreen from "../screens/HomeScreen";*/
+import SignUpScreen from "../screens/SignUpScreen";
+import ClubOrCompany from "../screens/ClubOrCompanyScreen.js/ClubOrCompany";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,9 +18,8 @@ const Navigation = () => {
         <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
         <Stack.Screen name="ResetConfirmation" component={ResetConfirmation} />
-        {/*<Stack.Screen name="NewPassword" component={NewPasswordScreen} />
-
-      <Stack.Screen name="Home" component={HomeScreen} />*/}
+        <Stack.Screen name="SignUp" component={SignUpScreen} />
+        <Stack.Screen name="ClubOrCompany" component={ClubOrCompany} />
       </Stack.Navigator>
     </NavigationContainer>
   );

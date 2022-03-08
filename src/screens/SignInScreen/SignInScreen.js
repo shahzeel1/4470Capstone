@@ -9,7 +9,7 @@ import {
   Keyboard,
   KeyboardAvoidingView,
 } from "react-native";
-import Logo from "../../../assets/images/WTH_logo.png";
+import Logo from "../../../assets/images/CadmanLogoDark1.png";
 import emailImage from "../../../assets/images/email2.png";
 import passwordImage from "../../../assets/images/padlock.png";
 import CustomInput from "../../components/CustomInput";
@@ -26,6 +26,9 @@ const SignInScreen = () => {
   const onSignInPressed = () => {};
   const onForgotPasswordPressed = () => {
     navigation.navigate("ForgotPassword");
+  };
+  const onSignUpPressed = () => {
+    navigation.navigate("SignUp");
   };
 
   let [fontsLoaded] = useFonts({
@@ -77,7 +80,7 @@ const SignInScreen = () => {
           />
           <CustomButton
             text="Don't have an account? Sign Up"
-            onPress={onSignInPressed}
+            onPress={onSignUpPressed}
             type="TERTIARY"
             style={{ padding: 10, alignSelf: "center" }}
           />

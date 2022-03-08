@@ -9,10 +9,7 @@ import {
   Keyboard,
   KeyboardAvoidingView,
 } from "react-native";
-import Logo from "../../../assets/images/WTH_logo.png";
-import emailImage from "../../../assets/images/email2.png";
-import passwordImage from "../../../assets/images/padlock.png";
-import CustomInput from "../../components/CustomInput";
+import Logo from "../../../assets/images/CadmanLogoDark1.png";
 import CustomButton from "../../components/CustomButton";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";

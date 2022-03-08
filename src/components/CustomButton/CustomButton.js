@@ -1,36 +1,55 @@
 import { Prompt_600SemiBold } from "@expo-google-fonts/prompt";
 import React from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { Text, StyleSheet, Pressable, Image } from "react-native";
 
 const CustomButton = ({
   onPress,
   text,
+  icon,
   type = "PRIMARY",
   bgColor,
   fgColor,
   style,
 }) => {
-  return (
-    <Pressable
-      onPress={onPress}
-      style={[
-        styles.container,
-        styles[`container_${type}`],
-        bgColor ? { backgroundColor: bgColor } : {},
-        style,
-      ]}
-    >
-      <Text
+  if (!icon) {
+    return (
+      <Pressable
+        onPress={onPress}
         style={[
-          styles.text,
-          styles[`text_${type}`],
-          fgColor ? { color: fgColor } : {},
+          styles.container,
+          styles[`container_${type}`],
+          bgColor ? { backgroundColor: bgColor } : {},
+          { borderRadius: 100 },
+          style,
         ]}
       >
-        {text}
-      </Text>
-    </Pressable>
-  );
+        <Text
+          style={[
+            styles.text,
+            styles[`text_${type}`],
+            fgColor ? { color: fgColor } : {},
+          ]}
+        >
+          {text}
+        </Text>
+      </Pressable>
+    );
+  } else {
+    return (
+      <Pressable
+        onPress={onPress}
+        style={[
+          styles.container,
+          styles[`container_${type}`],
+          bgColor ? { backgroundColor: bgColor } : {},
+          { borderRadius: 25 },
+          style,
+        ]}
+      >
+        <Image source={icon} style={styles.icon} />
+      </Pressable>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
@@ -40,7 +59,6 @@ const styles = StyleSheet.create({
     marginVertical: 5,
 
     alignItems: "center",
-    borderRadius: 100,
   },
 
   container_PRIMARY: {
@@ -69,6 +87,11 @@ const styles = StyleSheet.create({
     color: "#C6CEFF",
     fontSize: 15,
     fontFamily: "Prompt_500Medium",
+  },
+  icon: {
+    width: "100%",
+    height: "100%",
+    resizeMode: "contain",
   },
 });
 
