@@ -66,7 +66,10 @@ const CreateProject = () => {
 
 
   return (
-    <View Style={styles.container}>
+    <KeyboardAvoidingView
+    behavior={Platform.OS === "ios" ? "padding" : "height"}
+    style={styles.container}
+  >
        <ScrollView Style={styles.scrollView}>
           <Image
             source={Logo}
@@ -74,7 +77,7 @@ const CreateProject = () => {
             resizeMode="contain"
           />
           <Text style={styles.header}>
-            Enter your project details:
+            Enter project details:
           </Text>
           <CustomInput
             image={book}
@@ -169,7 +172,7 @@ const CreateProject = () => {
 
 
         </ScrollView>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
   
@@ -196,7 +199,7 @@ const CreateProject = () => {
       fontFamily: "Prompt_500Medium",
       fontSize: 39,
       textAlign: "center",
-
+      backgroundColor: "#2A3950",
     },
     text: {
       fontSize: 22,
@@ -204,3 +207,4 @@ const CreateProject = () => {
   });
   
 export default CreateProject;
+
