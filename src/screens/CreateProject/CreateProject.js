@@ -44,7 +44,7 @@ const CreateProject = () => {
   const [projectNotes, setProjectNotes] = useState("");
   const [projectSponsorship, setProjectSponsorship] = useState("");
   const [projectBadge, setProjectBadge] = useState("");
-  const [projectSponcership, setProjectImage] = useState("");
+  const [projectImage, setProjectImage] = useState("");
 
 
   const navigation = useNavigation();
@@ -52,7 +52,7 @@ const CreateProject = () => {
   const onForgotPasswordPressed = () => {
     navigation.navigate("ForgotPassword");
   };
-  const onSignUpPressed = () => {
+  const onCreatePressed = () => {
     navigation.navigate("SignUp");
   };
 
@@ -66,8 +66,8 @@ const CreateProject = () => {
 
 
   return (
-      <View style={styles.container}>
-       <ScrollView>
+    <View Style={styles.container}>
+       <ScrollView Style={styles.scrollView}>
           <Image
             source={Logo}
             style={[styles.logo, { height: height * 0.3 }]}
@@ -120,25 +120,69 @@ const CreateProject = () => {
           />
           <CustomInput
             image={city}
-            placeholder="Industry"
-            value={projectIndustry}
-            setValue={setProjectIndustry}
+            placeholder="Technology"
+            value={projectTech}
+            setValue={setProjectTech}
           />
+          <CustomInput
+            image={city}
+            placeholder="Project Faculty"
+            value={projectFaculty}
+            setValue={setProjectFaculty}
+          />
+          <CustomInput
+            image={city}
+            placeholder="Project Description"
+            value={projectDescription}
+            setValue={setProjectDescription}
+          />
+          <CustomInput
+            image={city}
+            placeholder="Project Roles"
+            value={projectRoles}
+            setValue={setProjectRoles}
+          />
+          <CustomInput
+            image={city}
+            placeholder="Project Notes"
+            value={projectNotes}
+            setValue={setProjectNotes}
+          />
+          <CustomInput
+            image={city}
+            placeholder="Project Sponsorship"
+            value={projectSponsorship}
+            setValue={setProjectSponsorship}
+          />
+          <CustomInput
+            image={city}
+            placeholder="Project Image"
+            value={projectImage}
+            setValue={setProjectImage}
+          />
+          <CustomButton
+            text="Create Project"
+            onPress={onCreatePressed}
+            type="TERTIARY"
+            style={{ padding: 10, alignSelf: "center" }}
+          />
+
+
         </ScrollView>
       </View>
     );
   }
   
   const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      paddingTop: StatusBar.currentHeight,
-      backgroundColor: "#2A3950",
-    },
+      container: {
+        flex: 1,
+        backgroundColor: "#2A3950",
+      },
     scrollView: {
       flex:1,
       backgroundColor: "#2A3950",
       marginHorizontal: 20,
+      alignSelf:"center",
     },
     logo: {
       width: "70%",
@@ -152,8 +196,7 @@ const CreateProject = () => {
       fontFamily: "Prompt_500Medium",
       fontSize: 39,
       textAlign: "center",
-      paddingLeft: 30,
-      paddingTop: -10,
+
     },
     text: {
       fontSize: 22,
