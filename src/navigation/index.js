@@ -8,6 +8,8 @@ import ForgotPasswordScreen from "../screens/ForgotPasswordScreen";
 import ResetConfirmation from "../screens/ResetConfirmation";
 import SignUpScreen from "../screens/SignUpScreen";
 import ClubOrCompany from "../screens/ClubOrCompanyScreen.js/ClubOrCompany";
+import ClubSignUpScreen from "../screens/ClubSignUpScreen";
+import CompanySignUpScreen from "../screens/CompanySignUpScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +22,8 @@ const Navigation = () => {
         <Stack.Screen name="ResetConfirmation" component={ResetConfirmation} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="ClubOrCompany" component={ClubOrCompany} />
+        <Stack.Screen name="ClubSignUp" component={ClubSignUpScreen} />
+        <Stack.Screen name="CompanySignUp" component={CompanySignUpScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

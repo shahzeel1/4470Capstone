@@ -28,9 +28,13 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     height: "14%",
+    alignItems: "center",
     paddingHorizontal: 10,
     flexDirection: "row",
     marginVertical: 5,
+    borderColor: "#0F6BAC",
+    borderWidth: 2,
+    borderRadius: 25,
   },
   input: {
     color: "white",

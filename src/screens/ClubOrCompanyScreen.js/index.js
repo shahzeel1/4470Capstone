@@ -1,1 +1,1 @@
-export { default } from "./CorCScreen";
+export { default } from "./ClubOrCompany";
