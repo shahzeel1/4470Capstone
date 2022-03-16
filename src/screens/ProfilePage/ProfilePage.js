@@ -59,14 +59,24 @@ const ProfilePage = () => {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
       >
-
+        <View style={styles.headBar}>
+          <CustomButton
+            text="Edit"
+            onPress={onEditPressed}
+            type="SECONDARY"
+            style={styles.editButton}
+          />
+          <Text style={styles.headBarText}>
+                Profile
+          </Text>
+          <CustomButton
+            text="Back"
+            onPress={onEditPressed}
+            type="SECONDARY"
+            style={styles.backButton}
+          />
+        </View>
        <ScrollView Style={styles.scrollView}>
-            <CustomButton
-              text="Edit"
-              onPress={onEditPressed}
-              type="SECONDARY"
-              style={styles.editButton}
-            />
 
             <Image source={ProfilePicture} style={[styles.profilePic]}/>
             <Text style={styles.profileName}>
@@ -125,6 +135,20 @@ const ProfilePage = () => {
   }
   
   const styles = StyleSheet.create({
+    headBar:{
+      backgroundColor: "#2A3950",
+      height: 65,
+      borderBottomColor:"#111727",
+      borderBottomWidth:1,
+    },
+    headBarText:{
+      color: "#FFFFFF",
+      fontFamily: "Prompt_500Medium",
+      fontSize: 25,
+      textAlign: "center",
+      marginTop:8,
+    },
+
     container: {
       flex: 1,
       backgroundColor: "#2A3950",
@@ -154,7 +178,6 @@ const ProfilePage = () => {
         fontFamily: "Prompt_500Medium",
         fontSize: 35,
         textAlign: "center",
-        paddingLeft: 30,
         marginTop:-14,
     },
     profileInfoScetion:{
@@ -199,8 +222,15 @@ const ProfilePage = () => {
       position: 'absolute',
       right: 5,
       width:65,
-      top: 5,
+      top: -2,
       marginRight:3,
+    },
+    backButton:{
+      position: 'absolute',
+      left: 5,
+      width:72,
+      top: -2,
+      marginLeft:3,
     },
 
   });
