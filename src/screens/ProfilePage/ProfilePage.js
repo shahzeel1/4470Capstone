@@ -17,13 +17,10 @@ import ProfilePicture from "../../../assets/images/CadmanLogoDark1.png";//get fr
 
 
 
-import emailImage from "../../../assets/images/email2.png";
-import passwordImage from "../../../assets/images/padlock.png";
 import school from "../../../assets/images/school.png";
 import city from "../../../assets/images/city.png";
-import book from "../../../assets/images/book.png";
-import orgImage from "../../../assets/images/enterprise.png";
 import personImage from "../../../assets/images/user2.png";
+
 import CustomButton from "../../components/CustomButton";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
@@ -39,19 +36,13 @@ const ProfilePage = () => {
   const ProfileLocation = "Western Road, London, ON"; //get from database
   const ProfileProgram = "Honour's in computer science with a minor in  "; //get from database
 
-  const { height } = useWindowDimensions();
-  const [projectName, setProjectName] = useState("");
-  const [projectType, setProjectType] = useState("");
-
-
-
   const navigation = useNavigation();
-  const onBackPressed = () => {};
-  const onForgotPasswordPressed = () => {
-    navigation.navigate("ForgotPassword");
+
+  const onBackPressed = () => {
+    navigation.navigate("Home");
   };
-  const onCreatePressed = () => {
-    navigation.navigate("SignUp");
+  const onEditPressed = () => {
+    navigation.navigate("EditProfile");
   };
 
   let [fontsLoaded] = useFonts({
@@ -72,7 +63,7 @@ const ProfilePage = () => {
        <ScrollView Style={styles.scrollView}>
             <CustomButton
               text="Edit"
-              onPress={onCreatePressed}
+              onPress={onEditPressed}
               type="SECONDARY"
               style={styles.editButton}
             />
