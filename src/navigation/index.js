@@ -10,6 +10,8 @@ import SignUpScreen from "../screens/SignUpScreen";
 import ClubOrCompany from "../screens/ClubOrCompanyScreen.js/ClubOrCompany";
 import ClubSignUpScreen from "../screens/ClubSignUpScreen";
 import CompanySignUpScreen from "../screens/CompanySignUpScreen";
+import CreateProject from "../screens/CreateProject";
+import ProfilePage from "../screens/ProfilePage";
 
 const Stack = createNativeStackNavigator();
 
