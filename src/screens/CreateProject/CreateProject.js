@@ -200,6 +200,7 @@ const CreateProject = () => {
       fontSize: 39,
       textAlign: "center",
       backgroundColor: "#2A3950",
+      marginBottom:13,
     },
     text: {
       fontSize: 22,
