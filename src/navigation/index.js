@@ -12,6 +12,8 @@ import ClubSignUpScreen from "../screens/ClubSignUpScreen";
 import CompanySignUpScreen from "../screens/CompanySignUpScreen";
 import CreateProject from "../screens/CreateProject";
 import ProfilePage from "../screens/ProfilePage";
+import Notifications from "../screens/Notifications";
+import ProjectPage from "../screens/ProjectPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +28,11 @@ const Navigation = () => {
         <Stack.Screen name="ClubOrCompany" component={ClubOrCompany} />
         <Stack.Screen name="ClubSignUp" component={ClubSignUpScreen} />
         <Stack.Screen name="CompanySignUp" component={CompanySignUpScreen} />
+        <Stack.Screen name="ProfilePage" component={ProfilePage} />
+        <Stack.Screen name="ProjectPage" component={ProjectPage} />
+        <Stack.Screen name="Notification" component={Notifications} />
+        <Stack.Screen name="CreateProject" component={CreateProject} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
