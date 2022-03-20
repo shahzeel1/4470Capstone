@@ -27,6 +27,7 @@ import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
 import CustomInput from "../../components/CustomInput";
 import CustomDropDown from "../../components/CustomDropDown";
+import CustomItemDisplay from "../../components/CustomItemDisplay";
 
 
 const ProfilePage = () => {
@@ -103,7 +104,24 @@ const ProfilePage = () => {
                   Badges:
           </Text>
           <ScrollView style={styles.sideSwippingScrollView} horizontal={true}>
-
+            <CustomItemDisplay
+              text="Create Project"
+              type="SECONDARY"
+              icon={school}
+              style={{ padding: 10, alignSelf: "center" }}
+            />
+            <CustomItemDisplay
+              text="Create Project"
+              type="SECONDARY"
+              icon={school}
+              style={{ padding: 10, alignSelf: "center" }}
+            />
+            <CustomItemDisplay
+              text="Create Project"
+              type="SECONDARY"
+              icon={school}
+              style={{ padding: 10, alignSelf: "center" }}
+            />
 
           </ScrollView>
 
