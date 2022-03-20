@@ -84,12 +84,14 @@ const CreateProject = () => {
             placeholder="Project Name"
             value={projectName}
             setValue={setProjectName}
+            styleChoice={"CreateProject"}
           />
           <CustomInput
             image={book}
             placeholder="Project Type"
             value={projectType}
             setValue={setProjectType}
+            styleChoice={"CreateProject"}
           />
           <CustomDropDown
             image={book}
@@ -108,65 +110,75 @@ const CreateProject = () => {
             placeholder="Project School"
             value={projectSchool}
             setValue={setProjectSchool}
+            styleChoice={"CreateProject"}
           />
           <CustomInput
             image={city}
             placeholder="Project City"
             value={projectCity}
             setValue={setProjectCity}
+            styleChoice={"CreateProject"}
           />
           <CustomInput
             image={city}
             placeholder="Industry"
             value={projectIndustry}
             setValue={setProjectIndustry}
+            styleChoice={"CreateProject"}
           />
           <CustomInput
             image={city}
             placeholder="Technology"
             value={projectTech}
             setValue={setProjectTech}
+            styleChoice={"CreateProject"}
           />
           <CustomInput
             image={city}
             placeholder="Project Faculty"
             value={projectFaculty}
             setValue={setProjectFaculty}
+            styleChoice={"CreateProject"}
           />
           <CustomInput
             image={city}
             placeholder="Project Description"
             value={projectDescription}
             setValue={setProjectDescription}
+            styleChoice={"CreateProject"}
           />
           <CustomInput
             image={city}
             placeholder="Project Roles"
             value={projectRoles}
             setValue={setProjectRoles}
+            styleChoice={"CreateProject"}
           />
           <CustomInput
             image={city}
             placeholder="Project Notes"
             value={projectNotes}
             setValue={setProjectNotes}
+            styleChoice={"CreateProject"}
           />
           <CustomInput
             image={city}
             placeholder="Project Sponsorship"
             value={projectSponsorship}
             setValue={setProjectSponsorship}
+            styleChoice={"CreateProject"}
           />
           <CustomInput
             image={city}
             placeholder="Project Image"
             value={projectImage}
             setValue={setProjectImage}
+            styleChoice={"CreateProject"}
           />
           <CustomButton
             text="Create Project"
             onPress={onCreatePressed}
-            type="TERTIARY"
+            type="SECONDARY"
             style={{ padding: 10, alignSelf: "center" }}
           />
 
@@ -185,10 +197,11 @@ const CreateProject = () => {
       flex:1,
       backgroundColor: "#2A3950",
       marginHorizontal: 20,
+      marginVertical:100,
       alignSelf:"center",
     },
     logo: {
-      width: "70%",
+      width: "100%",
       maxWidth: 300,
       maxHeight: 200,
       padding: 20,
@@ -208,4 +221,3 @@ const CreateProject = () => {
   });
   
 export default CreateProject;
-
