@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   bottomWritting:{
     bottom:-152,
-
+    right:-24,
     alignItems: "center",
     fontSize:28,
   },
