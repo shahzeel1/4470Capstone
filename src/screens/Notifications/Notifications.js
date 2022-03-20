@@ -34,11 +34,11 @@ const Notifications = () => {
   const navigation = useNavigation();
 
 
-  const onHomePressed = () => {
-    navigation.navigate("Home");
+  const onProjectPagePressed = () => {
+    navigation.navigate("ProjectPage");
   };
   const onBackPressed = () => {
-    navigation.navigate("Home");
+    navigation.navigate("ProjectPage");
   };
   const onNotificationPressed = () => {
   };
@@ -57,8 +57,9 @@ const Notifications = () => {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
-
+  
   return (
+
       <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
@@ -82,7 +83,7 @@ const Notifications = () => {
        <View style={styles.bottomBar}>
         <CustomButton
                 icon={orgImage}
-                onPress={onHomePressed}
+                onPress={onProjectPagePressed}
                 style={[styles.bottomBarIcon]}
                 type="TERTIARY"
         />
@@ -122,7 +123,7 @@ const Notifications = () => {
       fontFamily: "Prompt_500Medium",
       fontSize: 25,
       textAlign: "center",
-      marginTop:8,
+      marginTop:17,
     },
     backButton:{
       position: 'absolute',
@@ -138,27 +139,25 @@ const Notifications = () => {
       alignSelf:"center",
     },
     container: {
-      flex: 1,
+      flexGrow: 1,
       backgroundColor: "#2A3950",
+      
     },
     bottomBar:{
       backgroundColor: "black",
       position: 'absolute',
       bottom:0,
-      width:428,
-      height: 45,
+      height: 55,
+      width:"100%",
       borderTopColor:"#111727",
       borderTopWidth:1,
       flexDirection:'row',
-      
+
     },
     bottomBarIcon:{
-      maxWidth: 110,
-      maxHeight: 80,
-      height:60,
-      resizeMode:"contain",
-      flexGrow:1,
-      marginTop:4,
+      marginTop:-4,
+      flexDirection:'row',
+      flex:1,
     },
 
 
