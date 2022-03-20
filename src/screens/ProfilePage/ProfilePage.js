@@ -16,6 +16,11 @@ import {
 import ProfilePicture from "../../../assets/images/CadmanLogoDark1.png";//get from database
 
 
+import PersonImage from "../../../assets/images/user.png";
+import NotificationImage from "../../../assets/images/notification.png";
+import HomeImage from "../../../assets/images/city.png";
+import MessageImage from "../../../assets/images/email.png";
+import orgImage from "../../../assets/images/enterprise.png";
 
 import school from "../../../assets/images/school.png";
 import city from "../../../assets/images/city.png";
@@ -39,8 +44,20 @@ const ProfilePage = () => {
 
   const navigation = useNavigation();
 
+  const onProjectPagePressed = () => {
+    navigation.navigate("ProjectPage");
+  };
+
+  const onNotificationPressed = () => {
+    navigation.navigate("Notification");
+  };
+  const onProfilePressed = () => {
+    navigation.navigate("ProfilePage");
+  };
+
+
   const onBackPressed = () => {
-    navigation.navigate("Home");
+    navigation.navigate("ProjectPage");
   };
   const onEditPressed = () => {
     navigation.navigate("EditProfile");
@@ -72,7 +89,7 @@ const ProfilePage = () => {
           </Text>
           <CustomButton
             text="Back"
-            onPress={onEditPressed}
+            onPress={onBackPressed}
             type="SECONDARY"
             style={styles.backButton}
           />
@@ -144,9 +161,35 @@ const ProfilePage = () => {
 
 
           </ScrollView>
+          <View style={styles.lastSeperator} /> 
 
         </ScrollView>
-
+        <View style={styles.bottomBar}>
+        <CustomButton
+                icon={orgImage}
+                onPress={onProjectPagePressed}
+                style={[styles.bottomBarIcon]}
+                type="TERTIARY"
+        />
+        <CustomButton
+                icon={PersonImage}
+                onPress={onProfilePressed}
+                style={[styles.bottomBarIcon]}
+                type="TERTIARY"
+        />
+        <CustomButton
+                icon={MessageImage}
+                onPress={onBackPressed}
+                style={[styles.bottomBarIcon]}
+                type="TERTIARY"
+        />
+        <CustomButton
+                icon={NotificationImage}
+                onPress={onNotificationPressed}
+                style={[styles.bottomBarIcon]}
+                type="TERTIARY"
+        />
+       </View>
 
       </KeyboardAvoidingView>
     );
@@ -230,6 +273,18 @@ const ProfilePage = () => {
       height:3,
       borderRadius: 25,
     },
+    lastSeperator:{
+      backgroundColor: '#EDEDED',
+      borderColor:'#EDEDED',
+      borderWidth: 0.8,
+      flex: 8,
+      flexDirection: 'row',
+      marginHorizontal:10,
+      marginVertical:20,
+      marginBottom:50,
+      height:3,
+      borderRadius: 25,
+    },
     sideSwippingScrollView:{
       backgroundColor: "#354467",
       height:225,
@@ -250,7 +305,24 @@ const ProfilePage = () => {
       top: -2,
       marginLeft:3,
     },
+    bottomBar:{
+      backgroundColor: "black",
+      position: 'absolute',
+      bottom:0,
+      height: 55,
+      width:"100%",
+      borderTopColor:"#111727",
+      borderTopWidth:1,
+      flexDirection:'row',
+
+    },
+    bottomBarIcon:{
+      marginTop:-4,
+      flexDirection:'row',
+      flex:1,
+    },
 
   });
   
 export default ProfilePage;
+
