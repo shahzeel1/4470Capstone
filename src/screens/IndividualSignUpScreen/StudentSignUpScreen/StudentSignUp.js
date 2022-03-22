@@ -9,18 +9,21 @@ import {
   Keyboard,
   KeyboardAvoidingView,
 } from "react-native";
-import Logo from "../../../assets/images/CadmanLogoDark1.png";
-import cityImage from "../../../assets/images/city.png";
-import schoolImage from "../../../assets/images/school.png";
-import clubImage from "../../../assets/images/club.png";
-import CustomInput from "../../components/CustomInput";
-import CustomButton from "../../components/CustomButton";
-import CustomDropDown from "../../components/CustomDropDown";
+import Book from "../../../../assets/images/book.png";
+import Like from "../../../../assets/images/like.png";
+import Search from "../../../../assets/images/search.png";
+import Logo from "../../../../assets/images/CadmanLogoDark1.png";
+import cityImage from "../../../../assets/images/city.png";
+import schoolImage from "../../../../assets/images/school.png";
+import clubImage from "../../../../assets/images/club.png";
+import CustomInput from "../../../components/CustomInput";
+import CustomButton from "../../../components/CustomButton";
+import CustomDropDown from "../../../components/CustomDropDown";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
 
-const CompanySignUpScreen = () => {
+const StudentSignUp = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
 
@@ -42,17 +45,15 @@ const CompanySignUpScreen = () => {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.inner}>
-          <Image
-            source={Logo}
-            style={[styles.logo, { height: height * 0.3 }]}
-            resizeMode="contain"
-          />
-          <Text style={styles.h1}>Company Sign Up</Text>
+          <Text style={styles.h1}>Student Signup</Text>
           <Text style={styles.h2}>Please enter the information below</Text>
+          <CustomDropDown image={Book} textInputValue="MAJOR" />
+          <CustomDropDown image={Book} textInputValue="MINOR" />
+          <CustomDropDown image={schoolImage} textInputValue="SCHOOL" />
           <CustomDropDown image={cityImage} textInputValue="CITY" />
-          <CustomDropDown image={clubImage} textInputValue="FIELD" />
-          <CustomDropDown image={clubImage} textInputValue="COMPANY SIZE" />
-          <CustomInput image={clubImage} placeholder="COMPANY DESRCRIPTION" />
+          <CustomDropDown image={clubImage} textInputValue="WORK/CLUB EXPERIENCE" />
+          <CustomDropDown image={Like} textInputValue="INTERESTS" />
+          <CustomInput image={Search} placeholder="PROJECT PREFERENCE" />
 
           <CustomButton
             text="Already have an account? Sign In"
@@ -100,4 +101,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CompanySignUpScreen;
+
+export default StudentSignUp;

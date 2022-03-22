@@ -14,6 +14,10 @@ import CreateProject from "../screens/CreateProject";
 import ProfilePage from "../screens/ProfilePage";
 import Notifications from "../screens/Notifications";
 import ProjectPage from "../screens/ProjectPage";
+import IndividualSignUp from "../screens/IndividualSignUpScreen"
+import StudentSignUp from "../screens/IndividualSignUpScreen/StudentSignUpScreen/StudentSignUp";
+import FacultySignUp from "../screens/IndividualSignUpScreen/FacultySignUpScreen/FacultySignUp";
+import ProfessionalSignUp from "../screens/IndividualSignUpScreen/ProfessionalSignUpScreen/ProfessionalSignUp";
 
 const Stack = createNativeStackNavigator();
 
@@ -31,7 +35,11 @@ const Navigation = () => {
         <Stack.Screen name="ProfilePage" component={ProfilePage} />
         <Stack.Screen name="ProjectPage" component={ProjectPage} />
         <Stack.Screen name="Notification" component={Notifications} />
+        <Stack.Screen name="IndividualSignUp" component={IndividualSignUp} />
         <Stack.Screen name="CreateProject" component={CreateProject} />
+        <Stack.Screen name="StudentSignUp" component={StudentSignUp} />
+        <Stack.Screen name="FacultySignUp" component={FacultySignUp} />
+        <Stack.Screen name="ProfessionalSignUp" component={ProfessionalSignUp} />
 
       </Stack.Navigator>
     </NavigationContainer>

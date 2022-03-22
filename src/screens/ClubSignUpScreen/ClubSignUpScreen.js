@@ -56,7 +56,7 @@ const ClubSignUpScreen = () => {
           <CustomInput image={clubImage} placeholder="CLUB DESRCRIPTION" />
 
           <CustomButton
-            text="Don't have an account? Sign Up"
+            text="Already have an account? Sign In"
             onPress={onLoginPressed}
             type="TERTIARY"
             style={{ padding: 10, alignSelf: "center" }}

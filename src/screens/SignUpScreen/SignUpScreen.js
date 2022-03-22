@@ -25,6 +25,9 @@ const SignUpScreen = () => {
   const onOrgPressed = () => {
     navigation.navigate("ClubOrCompany");
   };
+  const onIndivPressed = () => {
+    navigation.navigate("IndividualSignUp")
+  }
 
   let [fontsLoaded] = useFonts({
     Prompt_500Medium,
@@ -58,7 +61,7 @@ const SignUpScreen = () => {
             <View style={styles.options}>
               <CustomButton
                 icon={personImage}
-                onPress={onLogInPressed}
+                onPress={onIndivPressed}
                 style={{ padding: 30, alignSelf: "center" }}
               />
               <Text style={styles.label}>INDIVIDUAL</Text>
