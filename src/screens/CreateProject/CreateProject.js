@@ -46,14 +46,18 @@ const CreateProject = () => {
   const [projectBadge, setProjectBadge] = useState("");
   const [projectImage, setProjectImage] = useState("");
 
+  var projectDurationOptions = ["6 Months", "1 Year", "2 Years", "3 Years", "Indefinite"];
 
   const navigation = useNavigation();
-  const onBackPressed = () => {};
   const onForgotPasswordPressed = () => {
     navigation.navigate("ForgotPassword");
   };
   const onCreatePressed = () => {
-    navigation.navigate("SignUp");
+    navigation.navigate("ProjectPage");
+  };
+
+  const onBackPressed = () => {
+    navigation.navigate("ProjectPage");
   };
 
   let [fontsLoaded] = useFonts({
@@ -70,7 +74,14 @@ const CreateProject = () => {
     behavior={Platform.OS === "ios" ? "padding" : "height"}
     style={styles.container}
   >
+
        <ScrollView Style={styles.scrollView}>
+         <CustomButton
+            text="Back"
+            onPress={onBackPressed}
+            type="SECONDARY"
+            style={styles.backButton}
+          />
           <Image
             source={Logo}
             style={[styles.logo, { height: height * 0.3 }]}
@@ -96,14 +107,16 @@ const CreateProject = () => {
           <CustomDropDown
             image={book}
             placeholder="Project Duration"
+            options =  {projectDurationOptions}
             value={projectDuration}
             setValue={setProjectDuration}
           />
-          <CustomDropDown
+          <CustomInput
             image={school}
             placeholder="School"
             value={projectSchool}
             setValue={setProjectSchool}
+            styleChoice={"CreateProject"}
           />
           <CustomInput
             image={book}
@@ -217,6 +230,13 @@ const CreateProject = () => {
     },
     text: {
       fontSize: 22,
+    },
+    backButton:{
+      position: 'absolute',
+      left: 5,
+      width:72,
+      top: -2,
+      marginLeft:3,
     },
   });
   
