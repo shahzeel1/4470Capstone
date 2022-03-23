@@ -23,7 +23,9 @@ const SignInScreen = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
-  const onSignInPressed = () => {};
+  const onSignInPressed = () => {
+    navigation.navigate("ProjectPage");
+  };
   const onForgotPasswordPressed = () => {
     navigation.navigate("ForgotPassword");
   };
