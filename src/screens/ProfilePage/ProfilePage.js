@@ -22,6 +22,9 @@ import HomeImage from "../../../assets/images/city.png";
 import MessageImage from "../../../assets/images/email.png";
 import orgImage from "../../../assets/images/enterprise.png";
 
+import search from "../../../assets/images/search.png";
+import project from "../../../assets/images/book.png";
+
 import school from "../../../assets/images/school.png";
 import city from "../../../assets/images/city.png";
 import personImage from "../../../assets/images/user2.png";
@@ -44,8 +47,8 @@ const ProfilePage = () => {
 
   const navigation = useNavigation();
 
-  const onProjectPagePressed = () => {
-    navigation.navigate("ProjectPage");
+  const onProjectSearchPagePressed = () => {
+    navigation.navigate("ProjectSearchPage");
   };
 
   const onNotificationPressed = () => {
@@ -54,13 +57,17 @@ const ProfilePage = () => {
   const onProfilePressed = () => {
     navigation.navigate("ProfilePage");
   };
-
-
+  const onMessagePagePressed = () =>{ 
+    navigation.navigate("MessagePage");
+  }
   const onBackPressed = () => {
-    navigation.navigate("ProjectPage");
+    navigation.navigate("ProjectSearchPage");
   };
   const onEditPressed = () => {
     navigation.navigate("EditProfile");
+  };
+  const onMyProjectsPage = () => {
+    navigation.navigate("MyProjectsPage");
   };
 
   let [fontsLoaded] = useFonts({
@@ -123,19 +130,18 @@ const ProfilePage = () => {
           <ScrollView style={styles.sideSwippingScrollView} horizontal={true}>
             <CustomItemDisplay
               text="Create Project"
-              type="SECONDARY"
+              type="profileItem"
               icon={school}
               style={{ padding: 10, alignSelf: "center" }}
             />
             <CustomItemDisplay
               text="Create Project"
-              type="SECONDARY"
-              icon={school}
+              type="profileItem"              icon={school}
               style={{ padding: 10, alignSelf: "center" }}
             />
             <CustomItemDisplay
               text="Create Project"
-              type="SECONDARY"
+              type="profileItem"
               icon={school}
               style={{ padding: 10, alignSelf: "center" }}
             />
@@ -166,8 +172,14 @@ const ProfilePage = () => {
         </ScrollView>
         <View style={styles.bottomBar}>
         <CustomButton
-                icon={orgImage}
-                onPress={onProjectPagePressed}
+                icon={search}
+                onPress={onProjectSearchPagePressed}
+                style={[styles.bottomBarIcon]}
+                type="TERTIARY"
+        />
+        <CustomButton
+                icon={project}
+                onPress={onMyProjectsPage}
                 style={[styles.bottomBarIcon]}
                 type="TERTIARY"
         />
@@ -179,7 +191,7 @@ const ProfilePage = () => {
         />
         <CustomButton
                 icon={MessageImage}
-                onPress={onBackPressed}
+                onPress={onMessagePagePressed}
                 style={[styles.bottomBarIcon]}
                 type="TERTIARY"
         />
@@ -309,7 +321,7 @@ const ProfilePage = () => {
       backgroundColor: "black",
       position: 'absolute',
       bottom:0,
-      height: 55,
+      height: 65,
       width:"100%",
       borderTopColor:"#111727",
       borderTopWidth:1,
