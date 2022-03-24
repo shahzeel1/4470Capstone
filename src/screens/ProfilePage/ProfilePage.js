@@ -14,21 +14,17 @@ import {
 } from "react-native";
 
 import ProfilePicture from "../../../assets/images/CadmanLogoDark1.png";//get from database
-
-
 import PersonImage from "../../../assets/images/user.png";
 import NotificationImage from "../../../assets/images/notification.png";
 import HomeImage from "../../../assets/images/city.png";
 import MessageImage from "../../../assets/images/email.png";
 import orgImage from "../../../assets/images/enterprise.png";
-
 import search from "../../../assets/images/search.png";
 import project from "../../../assets/images/book.png";
-
 import school from "../../../assets/images/school.png";
+import book from "../../../assets/images/book.png";
 import city from "../../../assets/images/city.png";
 import personImage from "../../../assets/images/user2.png";
-
 import CustomButton from "../../components/CustomButton";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
@@ -37,14 +33,12 @@ import CustomInput from "../../components/CustomInput";
 import CustomDropDown from "../../components/CustomDropDown";
 import CustomItemDisplay from "../../components/CustomItemDisplay";
 
-
 const ProfilePage = () => {
 
   const ProfileName = "Cameron Railton"; //get from database
   const ProfileSchool = "University of Western Ontario"; //get from database
   const ProfileLocation = "Western Road, London, ON"; //get from database
   const ProfileProgram = "Honour's in computer science with a minor in  "; //get from database
-
   const navigation = useNavigation();
 
   const onProjectSearchPagePressed = () => {
@@ -78,7 +72,6 @@ const ProfilePage = () => {
     return <AppLoading />;
   }
 
-
   return (
       <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -102,7 +95,6 @@ const ProfilePage = () => {
           />
         </View>
        <ScrollView Style={styles.scrollView}>
-
             <Image source={ProfilePicture} style={[styles.profilePic]}/>
             <Text style={styles.profileName}>
                 {ProfileName}
@@ -111,15 +103,24 @@ const ProfilePage = () => {
           <View style={styles.separator} />
 
           <View Style={styles.boxBackground}>
-            <Text style={styles.profileInfoScetion}>
-                  {ProfileLocation}
-            </Text>
-            <Text style={styles.profileInfoScetion}>
-                  {ProfileSchool}
-            </Text>
-            <Text style={styles.profileInfoScetion}>
-                  {ProfileProgram}
-            </Text>
+            <View  style={styles.iconPlusInfoViewBox}>
+              <Image source={city} style={[styles.infoIcon]}/>
+              <Text style={styles.profileInfoScetion}>
+                    {ProfileLocation}
+              </Text>
+            </View>
+            <View  style={styles.iconPlusInfoViewBox}>
+              <Image source={school} style={[styles.infoIcon]}/>
+              <Text style={styles.profileInfoScetion}>
+                    {ProfileSchool}
+              </Text>
+            </View>
+            <View  style={styles.iconPlusInfoViewBox}>
+              <Image source={book} style={[styles.infoIcon]}/>
+              <Text style={styles.profileInfoScetion}>
+                    {ProfileProgram}
+              </Text>
+            </View>
           </View>
 
           <View style={styles.separator} /> 
@@ -332,6 +333,19 @@ const ProfilePage = () => {
       marginTop:-4,
       flexDirection:'row',
       flex:1,
+    },
+    infoIcon:{
+      height:25,
+      width:25,
+      marginLeft:15,
+      marginRight:-18,
+      marginTop:26,
+      resizeMode: "contain",
+    },
+    iconPlusInfoViewBox:
+    {
+      alignItems: "center", 
+      flexDirection:"row",
     },
 
   });
