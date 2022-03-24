@@ -18,36 +18,39 @@ import NotificationImage from "../../../assets/images/notification.png";
 import HomeImage from "../../../assets/images/city.png";
 import MessageImage from "../../../assets/images/email.png";
 import orgImage from "../../../assets/images/enterprise.png";
+import school from "../../../assets/images/school.png";
+import search from "../../../assets/images/search.png";
+import project from "../../../assets/images/book.png";
 
 import CustomButton from "../../components/CustomButton";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
+import CustomItemDisplay from "../../components/CustomItemDisplay";
 
 
 const Notifications = () => {
 
-
+  //page navigation
   const { height } = useWindowDimensions();
-
-
   const navigation = useNavigation();
-
-
-  const onProjectPagePressed = () => {
-    navigation.navigate("ProjectPage");
+  const onProjectSearchPagePressed = () => {
+    navigation.navigate("ProjectSearchPage");
   };
   const onBackPressed = () => {
-    navigation.navigate("ProjectPage");
+    navigation.navigate("ProjectSearchPage");
   };
   const onNotificationPressed = () => {
   };
   const onProfilePressed = () => {
     navigation.navigate("ProfilePage");
   };
-
-
-
+  const onMessagePressed = () => {
+    navigation.navigate("MessagePage");
+  };
+  const onMyProjectsPressed = () => {
+    navigation.navigate("MyProjectsPage");
+  };
 
 
   let [fontsLoaded] = useFonts({
@@ -77,13 +80,35 @@ const Notifications = () => {
           />
         </View>
        <ScrollView Style={styles.scrollView}>
-            
+       <CustomItemDisplay
+              text="Create Project"
+              type="NotificationItem"
+              icon={school}
+              style={{ padding: 10, alignSelf: "center" }}
+            />
+            <CustomItemDisplay
+              text="Create Project"
+              type="NotificationItem"              icon={school}
+              style={{ padding: 10, alignSelf: "center" }}
+            />
+            <CustomItemDisplay
+              text="Create Project"
+              type="NotificationItem"
+              icon={school}
+              style={{ padding: 10, alignSelf: "center" }}
+            />
        </ScrollView>
 
        <View style={styles.bottomBar}>
         <CustomButton
-                icon={orgImage}
-                onPress={onProjectPagePressed}
+                icon={search}
+                onPress={onProjectSearchPagePressed}
+                style={[styles.bottomBarIcon]}
+                type="TERTIARY"
+        />
+        <CustomButton
+                icon={project}
+                onPress={onMyProjectsPressed}
                 style={[styles.bottomBarIcon]}
                 type="TERTIARY"
         />
@@ -95,16 +120,17 @@ const Notifications = () => {
         />
         <CustomButton
                 icon={MessageImage}
-                onPress={onBackPressed}
+                onPress={onMessagePressed}
                 style={[styles.bottomBarIcon]}
                 type="TERTIARY"
         />
-        <CustomButton
+                <CustomButton
                 icon={NotificationImage}
                 onPress={onNotificationPressed}
                 style={[styles.bottomBarIcon]}
                 type="TERTIARY"
         />
+        
        </View>
 
       </KeyboardAvoidingView>
@@ -147,7 +173,7 @@ const Notifications = () => {
       backgroundColor: "black",
       position: 'absolute',
       bottom:0,
-      height: 55,
+      height: 65,
       width:"100%",
       borderTopColor:"#111727",
       borderTopWidth:1,
