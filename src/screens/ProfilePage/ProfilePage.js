@@ -11,6 +11,8 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
+  Dimensions, 
+  TouchableHighlight
 } from "react-native";
 
 import ProfilePicture from "../../../assets/images/CadmanLogoDark1.png";//get from database
@@ -39,12 +41,30 @@ const ProfilePage = () => {
   const ProfileSchool = "University of Western Ontario"; //get from database
   const ProfileLocation = "Western Road, London, ON"; //get from database
   const ProfileProgram = "Honour's in computer science with a minor in  "; //get from database
-  const navigation = useNavigation();
+  
+  var initials = "";
 
+ //temporary till we can see if user is a org or not
+ const isOrganization = false;
+
+//getting the initials of the user
+if(isOrganization == false){
+  var firstLast = ProfileName.split(" ");
+  var hasBoth = firstLast.length;
+  if(hasBoth>1){
+     initials = firstLast[0].substring(0,1) + firstLast[hasBoth-1].substring(0,1);
+  }
+  else if(hasBoth ==1){
+    initials = firstLast[0].substring(0,2);
+  }
+}
+
+
+  //navigation pages bottom bar and back
+  const navigation = useNavigation();
   const onProjectSearchPagePressed = () => {
     navigation.navigate("ProjectSearchPage");
   };
-
   const onNotificationPressed = () => {
     navigation.navigate("Notification");
   };
@@ -72,6 +92,12 @@ const ProfilePage = () => {
     return <AppLoading />;
   }
 
+
+
+
+
+
+
   return (
       <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -95,7 +121,14 @@ const ProfilePage = () => {
           />
         </View>
        <ScrollView Style={styles.scrollView}>
-            <Image source={ProfilePicture} style={[styles.profilePic]}/>
+
+
+            <View style={styles.containerCircle}>
+              <View style={styles.CircleShape} > 
+                <Text style={styles.ProfileCricleText}>{initials}</Text>
+              </View>
+            </View>
+
             <Text style={styles.profileName}>
                 {ProfileName}
             </Text>
@@ -244,8 +277,8 @@ const ProfilePage = () => {
       height: 300,
       alignSelf: "center",
       flex:1,
-      borderRadius: 10,
       marginTop:14,
+      resizeMode: "contain",
     },
     profileName:{
         color: "#FFFFFF",
@@ -347,8 +380,34 @@ const ProfilePage = () => {
       alignItems: "center", 
       flexDirection:"row",
     },
+    containerCircle: {
+      flex: 1,
+      marginTop:32,
+      marginBottom:25,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "#2A3950",
 
+    },
+    CircleShape: {
+      width: 200,
+      height: 200,
+      borderRadius: 200 / 2,
+      borderColor:"white",
+      borderWidth:2,
+
+      borderColor:"white",
+      flex:1,
+      flexDirection:'row',
+      alignSelf: 'center',
+      justifyContent:'center',
+    },
+    ProfileCricleText:{
+        fontSize:120,
+        color:"white",
+        
+        alignSelf: 'center',
+    },
   });
   
 export default ProfilePage;
-
