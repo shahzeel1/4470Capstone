@@ -12,7 +12,8 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   Dimensions, 
-  TouchableHighlight
+  TouchableHighlight,
+  Linking,
 } from "react-native";
 
 import ProfilePicture from "../../../assets/images/CadmanLogoDark1.png";//get from database
@@ -34,22 +35,45 @@ import { useNavigation } from "@react-navigation/native";
 import CustomInput from "../../components/CustomInput";
 import CustomDropDown from "../../components/CustomDropDown";
 import CustomItemDisplay from "../../components/CustomItemDisplay";
+import IndustryPic   from "../../../assets/images/enterprise2.png";
+import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 
 const ProfilePage = () => {
+   //temporary till we can see if user is a org or not
+  const isOrganization = true;
+  var Name;
+  var ProfileSchool;
+  var ProfileLocation;
+  var ProfileProgram;
+  var Industry;
+  var Description;
 
-  const ProfileName = "Cameron Railton"; //get from database
-  const ProfileSchool = "University of Western Ontario"; //get from database
-  const ProfileLocation = "Western Road, London, ON"; //get from database
-  const ProfileProgram = "Honour's in computer science with a minor in  "; //get from database
-  
+
+
+if(isOrganization == false){
+  var Name = "Cameron Railton"; //get from database
+  var ProfileSchool = "University of Western Ontario"; //get from database
+  var ProfileLocation = "Western Road, London, ON"; //get from database
+  var ProfileProgram = "Honour's in computer science with a minor in  "; //get from database
+  var Description = "";
+}
+else if(isOrganization == true){
+  var Name = "Cameron Railton"; //get from database
+  var ProfileLocation = "Western Road, London, ON"; //get from database
+  var Description = "Discription about an individual or about a company if user is a company, will be required for company, individual can update later";
+  var Industry = "Technology";
+  var Email = "mailto:" + "FakeBuisness@hotmail.com";
+}
+
+
+
+
   var initials = "";
 
- //temporary till we can see if user is a org or not
- const isOrganization = false;
 
 //getting the initials of the user
-if(isOrganization == false){
-  var firstLast = ProfileName.split(" ");
+//if(isOrganization == false){
+  var firstLast = Name.split(" ");
   var hasBoth = firstLast.length;
   if(hasBoth>1){
      initials = firstLast[0].substring(0,1) + firstLast[hasBoth-1].substring(0,1);
@@ -57,7 +81,7 @@ if(isOrganization == false){
   else if(hasBoth ==1){
     initials = firstLast[0].substring(0,2);
   }
-}
+//}
 
 
   //navigation pages bottom bar and back
@@ -92,13 +116,8 @@ if(isOrganization == false){
     return <AppLoading />;
   }
 
-
-
-
-
-
-
-  return (
+  if(isOrganization == false){
+    return (
       <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
@@ -122,7 +141,6 @@ if(isOrganization == false){
         </View>
        <ScrollView Style={styles.scrollView}>
 
-
             <View style={styles.containerCircle}>
               <View style={styles.CircleShape} > 
                 <Text style={styles.ProfileCricleText}>{initials}</Text>
@@ -130,7 +148,10 @@ if(isOrganization == false){
             </View>
 
             <Text style={styles.profileName}>
-                {ProfileName}
+                {Name}
+            </Text>
+            <Text style={styles.DescriptionText}>
+              {Description}
             </Text>
 
           <View style={styles.separator} />
@@ -142,6 +163,7 @@ if(isOrganization == false){
                     {ProfileLocation}
               </Text>
             </View>
+
             <View  style={styles.iconPlusInfoViewBox}>
               <Image source={school} style={[styles.infoIcon]}/>
               <Text style={styles.profileInfoScetion}>
@@ -256,6 +278,150 @@ if(isOrganization == false){
       </KeyboardAvoidingView>
     );
   }
+  // if is an ornanization
+else{
+  return (
+      <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+      >
+        <View style={styles.headBar}>
+          <CustomButton
+            text="Edit"
+            onPress={onEditPressed}
+            type="SECONDARY"
+            style={styles.editButton}
+          />
+          <Text style={styles.headBarText}>
+                Profile
+          </Text>
+          <CustomButton
+            text="Back"
+            onPress={onBackPressed}
+            type="SECONDARY"
+            style={styles.backButton}
+          />
+        </View>
+       <ScrollView Style={styles.scrollView}>
+
+            <View style={styles.containerCircle}>
+              <View style={styles.CircleShape} > 
+                <Text style={styles.ProfileCricleText}>{initials}</Text>
+              </View>
+            </View>
+
+            <Text style={styles.profileName}>
+                {Name}
+            </Text>
+            <Text style={styles.DescriptionText}>
+              {Description}
+            </Text>
+
+          <View style={styles.separator} />
+
+          <View Style={styles.boxBackground}>
+            <View  style={styles.iconPlusInfoViewBox}>
+              <Image source={city} style={[styles.infoIcon]}/>
+              <Text style={styles.profileInfoScetion}>
+                    {ProfileLocation}
+              </Text>
+            </View>
+
+            <View  style={styles.iconPlusInfoViewBox}>
+              <Image source={IndustryPic} style={[styles.infoIcon]}/>
+              <Text style={styles.profileInfoScetion}>
+                    {Industry}
+              </Text>
+            </View>
+            <View  style={styles.iconPlusInfoViewBox}>
+              <Image source={MessageImage} style={[styles.infoIcon]}/>
+              <Pressable  onPress={() => Linking.openURL(Email) }>
+                <Text style={styles.profileInfoScetionButton}>{Email.substring(7,Email.length)}</Text>
+              </Pressable>
+            </View>
+          </View>
+
+          <View style={styles.separator} /> 
+          
+          <Text style={styles.profileCategorySection}>
+                  Badges:
+          </Text>
+          <ScrollView style={styles.sideSwippingScrollView} horizontal={true}>
+            <CustomItemDisplay
+              text="Create Project"
+              type="profileItem"
+              icon={school}
+              style={{ padding: 10, alignSelf: "center" }}
+            />
+            <CustomItemDisplay
+              text="Create Project"
+              type="profileItem"              icon={school}
+              style={{ padding: 10, alignSelf: "center" }}
+            />
+            <CustomItemDisplay
+              text="Create Project"
+              type="profileItem"
+              icon={school}
+              style={{ padding: 10, alignSelf: "center" }}
+            />
+
+          </ScrollView>
+
+          <View style={styles.separator} /> 
+
+          <Text style={styles.profileCategorySection}>
+                  Projects:
+          </Text>
+          <ScrollView style={styles.sideSwippingScrollView} horizontal={true}>
+
+
+          </ScrollView>
+
+
+          <View style={styles.lastSeperator} /> 
+
+        </ScrollView>
+        <View style={styles.bottomBar}>
+        <CustomButton
+                icon={search}
+                onPress={onProjectSearchPagePressed}
+                style={[styles.bottomBarIcon]}
+                type="TERTIARY"
+        />
+        <CustomButton
+                icon={project}
+                onPress={onMyProjectsPage}
+                style={[styles.bottomBarIcon]}
+                type="TERTIARY"
+        />
+        <CustomButton
+                icon={PersonImage}
+                onPress={onProfilePressed}
+                style={[styles.bottomBarIcon]}
+                type="TERTIARY"
+        />
+        <CustomButton
+                icon={MessageImage}
+                onPress={onMessagePagePressed}
+                style={[styles.bottomBarIcon]}
+                type="TERTIARY"
+        />
+        <CustomButton
+                icon={NotificationImage}
+                onPress={onNotificationPressed}
+                style={[styles.bottomBarIcon]}
+                type="TERTIARY"
+        />
+       </View>
+
+      </KeyboardAvoidingView>
+    );
+}
+
+
+
+
+  }
   
   const styles = StyleSheet.create({
     headBar:{
@@ -303,6 +469,15 @@ if(isOrganization == false){
         textAlign: "center",
         marginTop:-14,
     },
+    DescriptionText:{
+      color: "#FFFFFF",
+      fontFamily: "Prompt_500Medium",
+      fontSize: 15,
+      textAlign: "center",
+      marginTop:10,
+      marginLeft:20,
+      marginRight:20,
+    },
     profileInfoScetion:{
       color: "#FFFFFF",
       fontFamily: "Prompt_500Medium",
@@ -310,6 +485,16 @@ if(isOrganization == false){
       textAlign: "left",
       paddingLeft: 30,
       paddingTop: 20,
+      marginBottom: -8,
+      flex:1,
+    }, // here cause message ico looks bad with other style
+    profileInfoScetionButton:{
+      color: "#FFFFFF",
+      fontFamily: "Prompt_500Medium",
+      fontSize: 20,
+      textAlign: "left",
+      paddingLeft: 30,
+      paddingTop: 23,
       marginBottom: -8,
       flex:1,
     },
@@ -421,7 +606,6 @@ if(isOrganization == false){
     ProfileCricleText:{
         fontSize:120,
         color:"white",
-        
         alignSelf: 'center',
     },
   });
