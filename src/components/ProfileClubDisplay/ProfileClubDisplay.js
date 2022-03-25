@@ -11,7 +11,7 @@ const ProfileClubDisplay = ({
     fgColor,
     style,
   }) => {
-if(type=="profileItem") {
+
   return (
       <Pressable onPress={onPress} style={[ProfileStyles.container,style, ]} >
         <ImageBackground source={icon} style={ProfileStyles.image}>
@@ -21,18 +21,6 @@ if(type=="profileItem") {
         
       </Pressable>
   );
-}
-  else if (type=="ProjectItem"){
-    return (
-      <Pressable onPress={onPress} style={[NotificationStyles.container,style, ]} >
-        <ImageBackground source={icon} style={NotificationStyles.image}>
-          <Text style={[NotificationStyles.bottomWritting]}> Western </Text>
-          
-        </ImageBackground> 
-        
-      </Pressable>
-  );
-  }
 };
 
 const ProfileStyles = StyleSheet.create({
