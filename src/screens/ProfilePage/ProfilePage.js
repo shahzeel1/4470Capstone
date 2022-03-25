@@ -39,15 +39,16 @@ import IndustryPic   from "../../../assets/images/enterprise2.png";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 
 const ProfilePage = () => {
-   //temporary till we can see if user is a org or not
+   //temporary till we can see if user is a org or not or viewer 
   const isOrganization = true;
+  const isViewer = false;
+
   var Name;
   var ProfileSchool;
   var ProfileLocation;
   var ProfileProgram;
   var Industry;
   var Description;
-
 
 
 if(isOrganization == false){
@@ -64,10 +65,6 @@ else if(isOrganization == true){
   var Industry = "Technology";
   var Email = "mailto:" + "FakeBuisness@hotmail.com";
 }
-
-
-
-
   var initials = "";
 
 
@@ -123,12 +120,23 @@ else if(isOrganization == true){
       style={styles.container}
       >
         <View style={styles.headBar}>
-          <CustomButton
-            text="Edit"
-            onPress={onEditPressed}
-            type="SECONDARY"
-            style={styles.editButton}
-          />
+          <View >
+              {(() => {
+                if (isViewer == false){
+                  return (
+                      <CustomButton
+                          text="Edit"
+                          onPress={onEditPressed}
+                          type="SECONDARY"
+                          style={styles.editButton}
+                      />)
+                  
+                }
+                else
+                  return null;
+                return null;
+              })()}
+          </View>
           <Text style={styles.headBarText}>
                 Profile
           </Text>
@@ -286,12 +294,22 @@ else{
       style={styles.container}
       >
         <View style={styles.headBar}>
-          <CustomButton
-            text="Edit"
-            onPress={onEditPressed}
-            type="SECONDARY"
-            style={styles.editButton}
-          />
+          <View >
+                {(() => {
+                  if (isViewer == false){
+                    return (
+                        <CustomButton
+                            text="Edit"
+                            onPress={onEditPressed}
+                            type="SECONDARY"
+                            style={styles.editButton}
+                        />)
+                  }
+                  else
+                    return null;
+                  return null;
+                })()}
+            </View>
           <Text style={styles.headBarText}>
                 Profile
           </Text>
@@ -611,3 +629,4 @@ else{
   });
   
 export default ProfilePage;
+
