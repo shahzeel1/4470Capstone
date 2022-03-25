@@ -11,8 +11,9 @@ const CustomDropDown = ({
   image, 
   textInputValue,
   options = ["hello", "bye"],
-  placeholder,
+  placeholder = textInputValue,
   answer,
+  styleSelect,
 }) => {
   let index = 0;
   const [selection, setSelection] = useState("");
@@ -22,7 +23,7 @@ const CustomDropDown = ({
     for(var i=0; i < options.length; i++){
       data.push({key: i+1,  label: options[i] });
      }
-
+if(styleSelect == 'createPage'){
   return (
     <View style={styles.createProjectContainer}>
       <Image source={image} style={styles.iconCreateProject} />
@@ -43,7 +44,34 @@ const CustomDropDown = ({
       </ModalSelector>
     </View>
   );
+  }
+  else{
+    return(
+   <View style={styles.container}>
+      <Image source={image} style={styles.icon} />
+      <ModalSelector
+        data={data}
+        onChange={(option) => {
+          setSelection( option.label )
+        }}
+        style={styles.input}
+      >
+        <TextInput
+        placeholder = {placeholder}
+        style={styles.textCreateProject}
+          value =  {selection}
+          placeholderTextColor={"#0F6BAC"}
+
+        />
+      </ModalSelector>
+    </View>
+    );
+  }
+
+
+
 };
+
 
 const styles = StyleSheet.create({
   createProjectContainer: {
@@ -90,9 +118,33 @@ const styles = StyleSheet.create({
     flex: 2,
     fontSize:20,
     marginLeft:16,
-  }
+  },
+  container: {
+    width: "100%",
+    height: "14%",
+    alignItems: "center",
+    paddingHorizontal: 10,
+    flexDirection: "row",
+    marginVertical: 5,
+    borderColor: "#0F6BAC",
+    borderWidth: 2,
+    borderRadius: 25,
+  },
+  input: {
+    width: "50%",
+    fontFamily: "Prompt_500Medium",
+    flex: 3,
+  },
+  icon: {
+    width: "50%",
+    height: "50%",
+    resizeMode: "contain",
+    marginVertical: 10,
+    flex: 1,
+  },
 
 });
 
 export default CustomDropDown;
+
 
