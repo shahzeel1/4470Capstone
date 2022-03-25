@@ -198,7 +198,23 @@ if(isOrganization == false){
                   Clubs:
           </Text>
           <ScrollView style={styles.sideSwippingScrollView} horizontal={true}>
-
+          <CustomItemDisplay
+              text="Create Project"
+              type="profileItem"
+              icon={school}
+              style={{ padding: 10, alignSelf: "center" }}
+            />
+            <CustomItemDisplay
+              text="Create Project"
+              type="profileItem"              icon={school}
+              style={{ padding: 10, alignSelf: "center" }}
+            />
+            <CustomItemDisplay
+              text="Create Project"
+              type="profileItem"
+              icon={school}
+              style={{ padding: 10, alignSelf: "center" }}
+            />
 
           </ScrollView>
           <View style={styles.lastSeperator} /> 
