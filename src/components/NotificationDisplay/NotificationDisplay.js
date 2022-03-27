@@ -1,205 +1,191 @@
-import React, { useState } from "react";
-import {
-  View,
-  ScrollView,
-  Text,
-  StatusBar,
-  SafeAreaView,
-  Image,
-  StyleSheet,
-  useWindowDimensions,
-  TouchableWithoutFeedback,
-  Keyboard,
-  KeyboardAvoidingView,
-} from "react-native";
-
-import PersonImage from "../../../assets/images/user.png";
-import NotificationImage from "../../../assets/images/notification.png";
-import HomeImage from "../../../assets/images/city.png";
-import MessageImage from "../../../assets/images/email.png";
-import orgImage from "../../../assets/images/enterprise.png";
-import school from "../../../assets/images/school.png";
-import search from "../../../assets/images/search.png";
-import project from "../../../assets/images/book.png";
-
-import CustomButton from "../../components/CustomButton";
-import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
-import AppLoading from "expo-app-loading";
-import { useNavigation } from "@react-navigation/native";
-import NotificationDisplay from "../../components/NotificationDisplay/NotificationDisplay";
+import { Prompt_600SemiBold } from "@expo-google-fonts/prompt";
+import React from "react";
+import { Text, StyleSheet, Pressable, Image, ImageBackground, View,  Dimensions } from "react-native";
 
 
-const Notifications = () => {
+import orgImage from "../../../assets/images/book.png";
 
-  //page navigation
-  const { height } = useWindowDimensions();
-  const navigation = useNavigation();
-  const onProjectSearchPagePressed = () => {
-    navigation.navigate("ProjectSearchPage");
-  };
-  const onBackPressed = () => {
-    navigation.navigate("ProjectSearchPage");
-  };
-  const onNotificationPressed = () => {
-  };
-  const onProfilePressed = () => {
-    navigation.navigate("ProfilePage");
-  };
-  const onMessagePressed = () => {
-    navigation.navigate("MessagePage");
-  };
-  const onMyProjectsPressed = () => {
-    navigation.navigate("MyProjectsPage");
-  };
+var windowWidth = Dimensions.get('window').width;
+var windowHeight = Dimensions.get('window').height;
+const NotificationDisplay = ({
+    onPress,
+    text,
+    icon = orgImage,
+    type = "PRIMARY",
+    bgColor,
+    fgColor,
+    style,
+   duration = "1 Year",
+    sender = "Facebook",
+    received = "16 days Ago",
+    notificationType = "General",
+    notificationName = "Application Accepted",
+    summary = "This is a summary of the message testing the length"
 
+  }) => {
 
-  let [fontsLoaded] = useFonts({
-    Prompt_500Medium,
-  });
+    const Category = (props) => <Text style={{fontWeight: 'bold',  color: "white",
+    fontFamily: "Prompt_500Medium"}}>{props.children}</Text>
+    if(notificationType == 'Message'){
+      return (
+        <Pressable onPress={onPress} style={[StylesMessage.container]} >
+          <Image source={orgImage} style={StylesMessage.image} />
+            <View sytle={[StylesMessage.Textbox]}>
+              <Text numberOfLines={1}  style={[StylesMessage.senderText]}><Category>{sender}</Category></Text>
+              <Text numberOfLines={1}  style={[StylesMessage.notificationTypeText ]}><Category>{notificationName}</Category></Text>
+              <Text numberOfLines={1}  style={[StylesMessage.MessageText ]}>{summary}</Text>
+              <Text numberOfLines={1} style={[StylesMessage.postedWriting]}>{received}</Text>
+              <View style={StylesMessage.separator} />
+            </View>
+        </Pressable>
+      );
+    }
+    else if(notificationType == 'General'){
+      return (
+        <Pressable onPress={onPress} style={[StyleGeneral.container]} >
+          <Image source={orgImage} style={StyleGeneral.image} />
+            <View sytle={[StyleGeneral.Textbox]}>
+              <Text numberOfLines={1}  style={[StyleGeneral.notificationTypeText ]}><Category>{notificationName}</Category></Text>
+              <Text numberOfLines={1}  style={[StyleGeneral.senderText]}><Category>{sender}</Category></Text>
+              <Text numberOfLines={1}  style={[StylesMessage.MessageText ]}></Text>
+              <Text numberOfLines={1} style={[StyleGeneral.postedWriting]}>{received}</Text>
+              <View style={StyleGeneral.separator} />
+            </View>
+        </Pressable>
+      );
+    }
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
-  
-  return (
+};
 
-      <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-      >
-
-        <View style={styles.headBar}>
-          <Text style={styles.headBarText}>
-                Notifications
-          </Text>
-          <CustomButton
-            text="Back"
-            onPress={onBackPressed}
-            type="SECONDARY"
-            style={styles.backButton}
-          />
-        </View>
-       <ScrollView Style={styles.scrollView}>
-            <NotificationDisplay 
-
-            />
-            <NotificationDisplay
-
-            />
-            <NotificationDisplay
-
-            />
-             <NotificationDisplay
-
-            />
-             <NotificationDisplay
-
-            />
-            <NotificationDisplay
-
-            />
-            <NotificationDisplay
-
-            />
-            <NotificationDisplay
-
-            />
-            <NotificationDisplay
-
-            />
-            
-            <Text></Text>
-            <Text></Text>
-            <Text></Text>
-            <Text></Text>
-            
-       </ScrollView>
-       <View style={styles.bottomBar}>
-        <CustomButton
-                icon={search}
-                onPress={onProjectSearchPagePressed}
-                style={[styles.bottomBarIcon]}
-                type="TERTIARY"
-        />
-        <CustomButton
-                icon={project}
-                onPress={onMyProjectsPressed}
-                style={[styles.bottomBarIcon]}
-                type="TERTIARY"
-        />
-        <CustomButton
-                icon={PersonImage}
-                onPress={onProfilePressed}
-                style={[styles.bottomBarIcon]}
-                type="TERTIARY"
-        />
-        <CustomButton
-                icon={MessageImage}
-                onPress={onMessagePressed}
-                style={[styles.bottomBarIcon]}
-                type="TERTIARY"
-        />
-        <CustomButton
-                icon={NotificationImage}
-                onPress={onNotificationPressed}
-                style={[styles.bottomBarIcon]}
-                type="TERTIARY"
-        />
-       </View>
-
-      </KeyboardAvoidingView>
-    );
-  }
-  
-  const styles = StyleSheet.create({
-    headBar:{
-      backgroundColor: "#2A3950",
-      height: 65,
-      borderBottomColor:"#111727",
-      borderBottomWidth:1,
-    },
-    headBarText:{
-      color: "#FFFFFF",
-      fontFamily: "Prompt_500Medium",
-      fontSize: 25,
-      textAlign: "center",
-      marginTop:17,
-    },
-    backButton:{
-      position: 'absolute',
-      left: 5,
-      width:72,
-      top: -2,
-      marginLeft:3,
-    },
-    scrollView: {
-      backgroundColor: "#2A3950",
-      flex:1,
-    },
-    container: {
-      flex: 1,
-      backgroundColor: "#2A3950",
-    },
-    bottomBar:{
-      backgroundColor: "black",
-      position: 'absolute',
+const StylesMessage = StyleSheet.create({
+  container: {
+    flexDirection:'row',
+  },
+  Textbox:{
       bottom:0,
-      height: 65,
-      width:"100%",
-      borderTopColor:"#111727",
-      borderTopWidth:1,
-      flexDirection:'row',
-
-    },
-    bottomBarIcon:{
-      marginTop:-4,
-      flexDirection:'row',
-      flex:1,
-    },
-    NotificationItem:{
-      flexGrow:1,
-    },
-
-  });
+  },
+  image: {
+    width:60,
+    height:45,
+    resizeMode:'contain',
+    top:23,
+    left:8,
+  },
+  senderText:{
+    fontSize:20,
+    left:20,
+    top:6,
+    color: "#0F6BAC",
+    fontFamily: 'Roboto',
+    flexWrap:'wrap',
+    width: windowWidth - 100,
+  },
+  notificationTypeText:{
+    flexWrap:'wrap',
+    fontSize:16,
+    left:20,
+    top:6,
+    color: "#0F6BAC",
+    fontFamily: 'Roboto',
+    width: windowWidth - 120,
+  },
+  MessageText:{
+    fontSize:16,
+    left:20,
+    top:6,
+    color: "#0F6BAC",
+    fontFamily: 'Roboto',
+    flexWrap:'wrap',
+    width: windowWidth - 140,
+  },
   
-export default Notifications;
+  postedWriting:{
+  fontSize:14,
+  color: "#0F6BAC",
+  textAlign:"right",
+  right:-26,
+  bottom:-5,
+  },
+
+  separator: {
+    color:"#483d8b",
+    borderColor :"#483d8b",
+    borderWidth: 1,
+    marginLeft:20,
+    marginRight:-30,
+    bottom:-7,
+    height:2,
+    borderRadius: 25,
+  },
+
+
+});
+const StyleGeneral = StyleSheet.create({
+  container: {
+    flexDirection:'row',
+  },
+  Textbox:{
+      bottom:0,
+  },
+  image: {
+    width:60,
+    height:45,
+    resizeMode:'contain',
+    top:23,
+    left:8,
+  },
+  senderText:{
+    fontSize:18,
+    left:20,
+    top:22,
+    color: "#0F6BAC",
+    fontFamily: 'Roboto',
+    flexWrap:'wrap',
+    width: windowWidth - 100,
+  },
+  notificationTypeText:{
+    flexWrap:'wrap',
+    fontSize:19,
+    left:20,
+    top:20,
+    color: "#0F6BAC",
+    fontFamily: 'Roboto',
+    width: windowWidth - 120,
+  },
+  MessageText:{
+    fontSize:16,
+    left:20,
+    top:6,
+    color: "#0F6BAC",
+    fontFamily: 'Roboto',
+    flexWrap:'wrap',
+    width: windowWidth - 140,
+  },
+  
+  postedWriting:{
+  fontSize:14,
+  color: "#0F6BAC",
+  textAlign:"right",
+  right:-26,
+  bottom:-5,
+  },
+
+  separator: {
+    color:"#483d8b",
+    borderColor :"#483d8b",
+    borderWidth: 1,
+    marginLeft:20,
+    marginRight:-30,
+    bottom:-7,
+    height:2,
+    borderRadius: 25,
+  },
+
+
+
+});
+//notification item style
+
+//project item style
+
+export default NotificationDisplay;
