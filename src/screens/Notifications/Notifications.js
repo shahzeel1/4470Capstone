@@ -20,6 +20,7 @@ import school from "../../../assets/images/school.png";
 import search from "../../../assets/images/search.png";
 import project from "../../../assets/images/book.png";
 
+import NotificationDisplay from "../../components/NotificationDisplay";
 import CustomButton from "../../components/CustomButton";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
