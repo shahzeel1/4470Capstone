@@ -46,8 +46,8 @@ const ProfileStyles = StyleSheet.create({
     flex: 1,
   },
   bottomWritting:{
-    bottom:-152,
-    right:-24,
+    bottom:-140,
+    right:-14,
     alignItems: "center",
     fontSize:28,
   },
@@ -57,3 +57,4 @@ const ProfileStyles = StyleSheet.create({
 //project item style
 
 export default ProfileBadgeDisplay;
+
