@@ -20,6 +20,7 @@ import school from "../../../assets/images/school.png";
 import search from "../../../assets/images/search.png";
 import project from "../../../assets/images/book.png";
 
+import MessageDisplay from "../../components/CustomButton";
 import CustomButton from "../../components/CustomButton";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
@@ -71,19 +72,19 @@ const MessagePage = () => {
         />
       </View>
       <ScrollView Style={styles.scrollView}>
-        <CustomItemDisplay
+        <MessageDisplay
           text="Create Project"
           type="NotificationItem"
           icon={school}
           style={{ padding: 10, alignSelf: "center" }}
         />
-        <CustomItemDisplay
+        <MessageDisplay
           text="Create Project"
           type="NotificationItem"
           icon={school}
           style={{ padding: 10, alignSelf: "center" }}
         />
-        <CustomItemDisplay
+        <MessageDisplay
           text="Create Project"
           type="NotificationItem"
           icon={school}
