@@ -23,6 +23,7 @@ import CustomButton from "../../components/CustomButton";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
+import MyProjectsDisplay from "../../components/MyProjectsDisplay";
 
 const MyProjectsPage = () => {
   // bottom bar navigation
@@ -63,7 +64,28 @@ const MyProjectsPage = () => {
       <View style={styles.headBar}>
         <Text style={styles.headBarText}>My Projects</Text>
       </View>
-      <ScrollView Style={styles.scrollView}></ScrollView>
+      <ScrollView Style={styles.scrollView}>
+      <MyProjectsDisplay>
+
+      </MyProjectsDisplay>
+      <MyProjectsDisplay>
+        
+      </MyProjectsDisplay>
+      <MyProjectsDisplay>
+        
+      </MyProjectsDisplay>
+      <MyProjectsDisplay>
+        
+      </MyProjectsDisplay>
+      <MyProjectsDisplay>
+        
+      </MyProjectsDisplay>
+      
+            <Text>  </Text>
+            <Text>  </Text>
+            <Text>  </Text>
+
+      </ScrollView>
 
       <View style={styles.bottomBar}>
         <CustomButton
@@ -123,13 +145,11 @@ const styles = StyleSheet.create({
     marginLeft: 3,
   },
   scrollView: {
-    flex: 1,
     backgroundColor: "#2A3950",
-    marginHorizontal: 20,
-    alignSelf: "center",
+    flex:1,
   },
   container: {
-    flexGrow: 1,
+    flex: 1,
     backgroundColor: "#2A3950",
   },
   bottomBar: {
