@@ -70,24 +70,41 @@ const Notifications = () => {
         />
       </View>
       <ScrollView Style={styles.scrollView}>
-        <CustomItemDisplay
-          text="Create Project"
-          type="NotificationItem"
-          icon={school}
-          style={{ padding: 10, alignSelf: "center" }}
-        />
-        <CustomItemDisplay
-          text="Create Project"
-          type="NotificationItem"
-          icon={school}
-          style={{ padding: 10, alignSelf: "center" }}
-        />
-        <CustomItemDisplay
-          text="Create Project"
-          type="NotificationItem"
-          icon={school}
-          style={{ padding: 10, alignSelf: "center" }}
-        />
+        <ScrollView Style={styles.scrollView}>
+            <NotificationDisplay 
+
+            />
+            <NotificationDisplay
+
+            />
+            <NotificationDisplay
+
+            />
+             <NotificationDisplay
+
+            />
+             <NotificationDisplay
+
+            />
+            <NotificationDisplay
+
+            />
+            <NotificationDisplay
+
+            />
+            <NotificationDisplay
+
+            />
+            <NotificationDisplay
+
+            />
+            
+            <Text></Text>
+            <Text></Text>
+            <Text></Text>
+            <Text></Text>
+            
+       </ScrollView>
       </ScrollView>
 
       <View style={styles.bottomBar}>
@@ -126,52 +143,55 @@ const Notifications = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  headBar: {
-    backgroundColor: "#2A3950",
-    height: 65,
-    borderBottomColor: "#111727",
-    borderBottomWidth: 1,
-  },
-  headBarText: {
-    color: "#FFFFFF",
-    fontFamily: "Prompt_500Medium",
-    fontSize: 25,
-    textAlign: "center",
-    marginTop: 17,
-  },
-  backButton: {
-    position: "absolute",
-    left: 5,
-    width: 72,
-    top: -2,
-    marginLeft: 3,
-  },
-  scrollView: {
-    flex: 1,
-    backgroundColor: "#2A3950",
-    marginHorizontal: 20,
-    alignSelf: "center",
-  },
-  container: {
-    flexGrow: 1,
-    backgroundColor: "#2A3950",
-  },
-  bottomBar: {
-    backgroundColor: "black",
-    position: "absolute",
-    bottom: 0,
-    height: 65,
-    width: "100%",
-    borderTopColor: "#111727",
-    borderTopWidth: 1,
-    flexDirection: "row",
-  },
-  bottomBarIcon: {
-    marginTop: -4,
-    flexDirection: "row",
-    flex: 1,
-  },
-});
+  const styles = StyleSheet.create({
+    headBar:{
+      backgroundColor: "#2A3950",
+      height: 65,
+      borderBottomColor:"#111727",
+      borderBottomWidth:1,
+    },
+    headBarText:{
+      color: "#FFFFFF",
+      fontFamily: "Prompt_500Medium",
+      fontSize: 25,
+      textAlign: "center",
+      marginTop:17,
+    },
+    backButton:{
+      position: 'absolute',
+      left: 5,
+      width:72,
+      top: -2,
+      marginLeft:3,
+    },
+    scrollView: {
+      backgroundColor: "#2A3950",
+      flex:1,
+    },
+    container: {
+      flex: 1,
+      backgroundColor: "#2A3950",
+    },
+    bottomBar:{
+      backgroundColor: "black",
+      position: 'absolute',
+      bottom:0,
+      height: 65,
+      width:"100%",
+      borderTopColor:"#111727",
+      borderTopWidth:1,
+      flexDirection:'row',
+
+    },
+    bottomBarIcon:{
+      marginTop:-4,
+      flexDirection:'row',
+      flex:1,
+    },
+    NotificationItem:{
+      flexGrow:1,
+    },
+
+  });
 
 export default Notifications;
