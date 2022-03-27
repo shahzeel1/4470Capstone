@@ -41,7 +41,7 @@ const ProfileStyles = StyleSheet.create({
   },
   image: {
     width:140,
-    height:100,
+    height:120,
     resizeMode: "contain",
     marginVertical: 10,
     flex: 1,
