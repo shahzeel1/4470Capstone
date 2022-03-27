@@ -31,6 +31,9 @@ import { useNavigation } from "@react-navigation/native";
 import CustomItemDisplay from "../../components/CustomItemDisplay";
 import IndustryPic from "../../../assets/images/enterprise2.png";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
+import ProfileProjectDisplay from "../../components/ProfileProjectDisplay"; 
+import ProfileClubDisplay from  "../../components/ProfileClubDisplay"; 
+import ProfileBadgeDisplay from  "../../components/ProfileBadgeDisplay";
 
 const ProfilePage = () => {
   //temporary till we can see if user is a org or not or viewer
@@ -166,19 +169,19 @@ const ProfilePage = () => {
 
           <Text style={styles.profileCategorySection}>Badges:</Text>
           <ScrollView style={styles.sideSwippingScrollView} horizontal={true}>
-            <CustomItemDisplay
+            <ProfileBadgeDisplay
               text="Create Project"
               type="profileItem"
               icon={school}
               style={{ padding: 10, alignSelf: "center" }}
             />
-            <CustomItemDisplay
+            <ProfileBadgeDisplay
               text="Create Project"
               type="profileItem"
               icon={school}
               style={{ padding: 10, alignSelf: "center" }}
             />
-            <CustomItemDisplay
+            <ProfileBadgeDisplay
               text="Create Project"
               type="profileItem"
               icon={school}
@@ -192,25 +195,30 @@ const ProfilePage = () => {
           <ScrollView
             style={styles.sideSwippingScrollView}
             horizontal={true}
-          ></ScrollView>
+          >
+            
+
+
+
+          </ScrollView>
 
           <View style={styles.separator} />
 
           <Text style={styles.profileCategorySection}>Clubs:</Text>
           <ScrollView style={styles.sideSwippingScrollView} horizontal={true}>
-            <CustomItemDisplay
+            <ProfileClubDisplay
               text="Create Project"
               type="profileItem"
               icon={school}
               style={{ padding: 10, alignSelf: "center" }}
             />
-            <CustomItemDisplay
+            <ProfileClubDisplay
               text="Create Project"
               type="profileItem"
               icon={school}
               style={{ padding: 10, alignSelf: "center" }}
             />
-            <CustomItemDisplay
+            <ProfileClubDisplay
               text="Create Project"
               type="profileItem"
               icon={school}
@@ -321,19 +329,19 @@ const ProfilePage = () => {
 
           <Text style={styles.profileCategorySection}>Badges:</Text>
           <ScrollView style={styles.sideSwippingScrollView} horizontal={true}>
-            <CustomItemDisplay
+            <ProfileBadgeDisplay
               text="Create Project"
               type="profileItem"
               icon={school}
               style={{ padding: 10, alignSelf: "center" }}
             />
-            <CustomItemDisplay
+            <ProfileBadgeDisplay
               text="Create Project"
               type="profileItem"
               icon={school}
               style={{ padding: 10, alignSelf: "center" }}
             />
-            <CustomItemDisplay
+            <ProfileBadgeDisplay
               text="Create Project"
               type="profileItem"
               icon={school}
