@@ -20,12 +20,11 @@ import school from "../../../assets/images/school.png";
 import search from "../../../assets/images/search.png";
 import project from "../../../assets/images/book.png";
 
-import MessageDisplay from "../../components/CustomButton";
 import CustomButton from "../../components/CustomButton";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
-import CustomItemDisplay from "../../components/CustomItemDisplay";
+import MessageDisplay from "../../components/MessageDisplay";
 
 const MessagePage = () => {
   const { height } = useWindowDimensions();
@@ -73,23 +72,42 @@ const MessagePage = () => {
       </View>
       <ScrollView Style={styles.scrollView}>
         <MessageDisplay
-          text="Create Project"
-          type="NotificationItem"
-          icon={school}
-          style={{ padding: 10, alignSelf: "center" }}
+
         />
         <MessageDisplay
-          text="Create Project"
-          type="NotificationItem"
-          icon={school}
-          style={{ padding: 10, alignSelf: "center" }}
+
         />
         <MessageDisplay
-          text="Create Project"
-          type="NotificationItem"
-          icon={school}
-          style={{ padding: 10, alignSelf: "center" }}
+
         />
+        <MessageDisplay
+
+        />
+          <MessageDisplay
+
+        />
+        <MessageDisplay
+
+        />
+        <MessageDisplay
+
+        />
+        <MessageDisplay
+
+        />
+        <MessageDisplay
+
+        />
+        <MessageDisplay
+
+        />
+        <MessageDisplay
+
+        />
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
       </ScrollView>
 
       <View style={styles.bottomBar}>
@@ -150,13 +168,11 @@ const styles = StyleSheet.create({
     marginLeft: 3,
   },
   scrollView: {
-    flex: 1,
     backgroundColor: "#2A3950",
-    marginHorizontal: 20,
-    alignSelf: "center",
+    flex:1,
   },
   container: {
-    flexGrow: 1,
+    flex: 1,
     backgroundColor: "#2A3950",
   },
   bottomBar: {
