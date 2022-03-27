@@ -19,6 +19,7 @@ import MessageImage from "../../../assets/images/email2.png";
 import search from "../../../assets/images/search3.png";
 import project from "../../../assets/images/book.png";
 
+import SearchProjectDisplay from "../../components/SearchProjectDisplay";
 import CustomButton from "../../components/CustomButton";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
