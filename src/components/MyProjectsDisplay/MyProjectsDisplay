@@ -18,23 +18,13 @@ const MyProjectsDisplay = ({
     location = "London, ON",
     duration = "1 Year",
     projectName = "Name of project exe",
-    roles = ["Software Engineer", "Marketing Specialist"],
-    posted = "16 days Ago",
+    role = "Software Engineer",
+    joined = "06/07/2022",
     Organization= "Western University",
 
   }) => {
-    roles[0] = roles[0] + ",";
-    for(let i = 0; i < roles.length; i++){
-      if(i!= 0){
-        if(i != roles.length-1)
-          roles[i] = " " + roles[i] + ",";
-        else{
-          roles[i] = " " + roles[i];
-        }
-      }
-    }
+
     var newLine = '\n';
-    var roleLength = roles.length+1;
     const Category = (props) => <Text style={{fontWeight: 'bold',  color: "white",
     fontFamily: "Prompt_500Medium"}}>{props.children}</Text>
   return (
@@ -46,10 +36,10 @@ const MyProjectsDisplay = ({
         <View sytle={[Styles.Textbox]}>
           <Text numberOfLines={2}  style={[Styles.writting ]}><Category>{Organization}</Category></Text>
           <Text numberOfLines={2}  style={[Styles.writting ]}><Category>{projectName}</Category></Text>
-          <Text numberOfLines={roleLength} style={[Styles.smallerWriting]}>Roles: {roles}</Text>
+          <Text numberOfLines={1} style={[Styles.smallerWriting]}>Role: {role}</Text>
           <Text numberOfLines={2}  style={[Styles.smallerWriting]}>{location}</Text>          
           <Text  numberOfLines={1} style={[Styles.smallerWriting]}>{duration}</Text>
-          <Text  numberOfLines={1} style={[Styles.postedWriting]}>{posted}</Text>
+          <Text  numberOfLines={1} style={[Styles.joinedWriting]}>Joined project on:{joined} </Text>
           <View style={Styles.separator} />
         </View>
      
@@ -89,7 +79,7 @@ const Styles = StyleSheet.create({
     width: windowWidth - 100,
 
   },
-  postedWriting:{
+  joinedWriting:{
   top:-15,
   fontSize:15,
   color: "#0F6BAC",
@@ -112,3 +102,4 @@ const Styles = StyleSheet.create({
 //project item style
 
 export default MyProjectsDisplay;
+
