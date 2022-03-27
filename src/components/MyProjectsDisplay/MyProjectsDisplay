@@ -21,13 +21,17 @@ const MyProjectsDisplay = ({
     role = "Software Engineer",
     joined = "06/07/2022",
     Organization= "Western University",
+    status= "finished",
 
   }) => {
 
     var newLine = '\n';
     const Category = (props) => <Text style={{fontWeight: 'bold',  color: "white",
     fontFamily: "Prompt_500Medium"}}>{props.children}</Text>
-  return (
+ 
+    if(status != 'finished'){
+ 
+    return (
 
 
 
@@ -45,6 +49,27 @@ const MyProjectsDisplay = ({
      
     </Pressable>
   );
+  }
+  else{
+    return (
+
+
+
+        <Pressable onPress={onPress} style={[Styles.container]} >
+          <Image source={orgImage} style={Styles.image} />
+            <View sytle={[Styles.Textbox]}>
+              <Text numberOfLines={2}  style={[Styles.writting ]}><Category>{Organization}</Category></Text>
+              <Text numberOfLines={2}  style={[Styles.writting ]}><Category>{projectName}</Category></Text>
+              <Text numberOfLines={1} style={[Styles.smallerWriting]}>Role: {role}</Text>
+              <Text numberOfLines={2}  style={[Styles.smallerWriting]}>{location}</Text>          
+              <Text  numberOfLines={1} style={[Styles.smallerWriting]}>{duration}</Text>
+              <Text  numberOfLines={1} style={[Styles.joinedWriting]}>Finished project on:{joined} </Text>
+              <View style={Styles.separator} />
+            </View>
+         
+        </Pressable>
+      );
+  }
 };
 
 const Styles = StyleSheet.create({
@@ -102,4 +127,5 @@ const Styles = StyleSheet.create({
 //project item style
 
 export default MyProjectsDisplay;
+
 
