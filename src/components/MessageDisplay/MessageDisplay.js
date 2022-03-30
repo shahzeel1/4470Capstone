@@ -5,6 +5,7 @@ import { Text, StyleSheet, Pressable, Image, ImageBackground, View,  Dimensions 
 
 import orgImage from "../../../assets/images/book.png";
 
+var windowWidth = Dimensions.get('window').width;
 const MessageDisplay = ({
     onPress,
     text,
@@ -72,7 +73,7 @@ const StylesMessage = StyleSheet.create({
     top:12,
     color: "#0F6BAC",
     flexWrap:'wrap',
-    maxWidth:300,
+    width: windowWidth - 95,
   },
   
   postedWriting:{
