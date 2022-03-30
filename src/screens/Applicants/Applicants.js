@@ -26,7 +26,7 @@ import CustomButton from "../../components/CustomButton";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
-import CustomItemDisplay from "../../components/CustomItemDisplay";
+import ApplicantDisplay from "../../components/ApplicantDisplay";
 
 
 const Applicants = () => {
@@ -34,13 +34,15 @@ const Applicants = () => {
   //page navigation
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
+
   const onProjectSearchPagePressed = () => {
     navigation.navigate("ProjectSearchPage");
   };
   const onBackPressed = () => {
-    navigation.navigate("ProjectSearchPage");
+    navigation.navigate("MyProjectPage");
   };
   const onNotificationPressed = () => {
+    navigation.navigate("Notifications");
   };
   const onProfilePressed = () => {
     navigation.navigate("ProfilePage");
@@ -80,22 +82,11 @@ const Applicants = () => {
           />
         </View>
        <ScrollView Style={styles.scrollView}>
-       <CustomItemDisplay
-              text="Create Project"
-              type="NotificationItem"
-              icon={school}
-              style={{ padding: 10, alignSelf: "center" }}
+            <ApplicantDisplay
             />
-            <CustomItemDisplay
-              text="Create Project"
-              type="NotificationItem"              icon={school}
-              style={{ padding: 10, alignSelf: "center" }}
+            <ApplicantDisplay
             />
-            <CustomItemDisplay
-              text="Create Project"
-              type="NotificationItem"
-              icon={school}
-              style={{ padding: 10, alignSelf: "center" }}
+            <ApplicantDisplay
             />
        </ScrollView>
 
@@ -167,7 +158,6 @@ const Applicants = () => {
     container: {
       flexGrow: 1,
       backgroundColor: "#2A3950",
-      
     },
     bottomBar:{
       backgroundColor: "black",
