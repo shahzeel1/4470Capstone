@@ -91,7 +91,6 @@ const Styles = StyleSheet.create({
     fontSize:20,
     left:10,
     color: "#0F6BAC",
-    fontFamily: 'Roboto',
     flexWrap:'wrap',
     width: windowWidth - 100,
   },
@@ -100,7 +99,6 @@ const Styles = StyleSheet.create({
     fontSize:17,
     left:10,
     color: "#0F6BAC",
-    fontFamily: 'Roboto',
     width: windowWidth - 100,
 
   },
