@@ -17,20 +17,20 @@ import CustomButton from "../../components/CustomButton";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
-
-const SignInScreen = () => {
+const SignUpScreenFirst = () => {
   const { height } = useWindowDimensions();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
   const onSignInPressed = () => {
-    navigation.navigate("ProjectSearchPage");
+    navigation.navigate("SignIn");
   };
   const onForgotPasswordPressed = () => {
     navigation.navigate("ForgotPassword");
   };
-  const onSignUpPressed = () => {
-    navigation.navigate("SignUpScreenFirst");
+  const onSignUpPressed = async () => {
+    console.log("Trying to signup with user: " + username);
+    navigation.navigate("SignUp");
   };
 
   let [fontsLoaded] = useFonts({
@@ -53,8 +53,8 @@ const SignInScreen = () => {
             style={[styles.logo, { height: height * 0.3 }]}
             resizeMode="contain"
           />
-          <Text style={styles.h1}>Login</Text>
-          <Text style={styles.h2}>Please sign in to continue</Text>
+          <Text style={styles.h1}>Sign Up</Text>
+          <Text style={styles.h2}>Please create an account</Text>
           <CustomInput
             image={emailImage}
             placeholder="EMAIL"
@@ -70,8 +70,8 @@ const SignInScreen = () => {
             secureTextEntry={true}
           />
           <CustomButton
-            text="LOGIN"
-            onPress={onSignInPressed}
+            text="Sign Up"
+            onPress={onSignUpPressed}
             style={{ padding: 30, alignSelf: "center" }}
           />
           <CustomButton
@@ -81,8 +81,8 @@ const SignInScreen = () => {
             style={{ padding: 20, alignSelf: "center" }}
           />
           <CustomButton
-            text="Don't have an account? Sign Up"
-            onPress={onSignUpPressed}
+            text="Already have an account? Sign In"
+            onPress={onSignInPressed}
             type="TERTIARY"
             style={{ padding: 10, alignSelf: "center" }}
           />
@@ -126,4 +126,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignInScreen;
+export default SignUpScreenFirst;

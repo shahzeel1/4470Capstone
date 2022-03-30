@@ -27,6 +27,9 @@ const ClubSignUpScreen = () => {
   const onLoginPressed = () => {
     navigation.navigate("SignIn");
   };
+  const onSignUpPressed = () => {
+    navigation.navigate("SignIn");
+  };
   let [fontsLoaded] = useFonts({
     Prompt_500Medium,
   });
@@ -49,12 +52,32 @@ const ClubSignUpScreen = () => {
           />
           <Text style={styles.h1}>Club Sign Up</Text>
           <Text style={styles.h2}>Please enter the information below</Text>
-          <CustomDropDown image={cityImage} textInputValue="CITY" />
-          <CustomDropDown image={schoolImage} textInputValue="SCHOOL" />
-          <CustomDropDown image={clubImage} textInputValue="FACULTY" />
-          <CustomDropDown image={clubImage} textInputValue="FIELD" />
+          <CustomDropDown
+            image={cityImage}
+            textInputValue="CITY"
+            options={["London", "Toronto"]}
+          />
+          <CustomDropDown
+            image={schoolImage}
+            textInputValue="SCHOOL"
+            options={["Western University", "Univeristy of Toronto"]}
+          />
+          <CustomDropDown
+            image={clubImage}
+            textInputValue="FACULTY"
+            options={["Science", "Business", "Engineering"]}
+          />
+          <CustomDropDown
+            image={clubImage}
+            textInputValue="FIELD"
+            options={["Software Engineer", "Medicine"]}
+          />
           <CustomInput image={clubImage} placeholder="CLUB DESRCRIPTION" />
-
+          <CustomButton
+            text="SIGN UP"
+            onPress={onSignUpPressed}
+            style={{ padding: 30, alignSelf: "center" }}
+          />
           <CustomButton
             text="Already have an account? Sign In"
             onPress={onLoginPressed}
