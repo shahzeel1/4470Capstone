@@ -56,7 +56,6 @@ const StylesMessage = StyleSheet.create({
     left:20,
     top:16,
     color: "#0F6BAC",
-    fontFamily: 'Roboto',
     flexWrap:'wrap',
   },
   notificationTypeText:{
@@ -65,7 +64,6 @@ const StylesMessage = StyleSheet.create({
     left:20,
     top:16,
     color: "#0F6BAC",
-    fontFamily: 'Roboto',
 
   },
   MessageText:{
@@ -73,7 +71,6 @@ const StylesMessage = StyleSheet.create({
     left:20,
     top:12,
     color: "#0F6BAC",
-    fontFamily: 'Roboto',
     flexWrap:'wrap',
     maxWidth:300,
   },
