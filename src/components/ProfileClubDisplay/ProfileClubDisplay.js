@@ -47,8 +47,8 @@ const ProfileStyles = StyleSheet.create({
     flex: 1,
   },
   bottomWritting:{
-    bottom:-152,
-    right:-24,
+    bottom:-132,
+    right:-16,
     alignItems: "center",
     fontSize:28,
   },
