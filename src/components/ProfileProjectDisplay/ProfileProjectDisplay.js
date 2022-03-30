@@ -86,7 +86,6 @@ const Styles = StyleSheet.create({
     fontSize:22,
     left:10,
     color: "#0F6BAC",
-    fontFamily: 'Roboto',
     flexWrap:'wrap',
   },
   smallerWriting:{
@@ -95,7 +94,6 @@ const Styles = StyleSheet.create({
     fontSize:20,
     left:10,
     color: "#0F6BAC",
-    fontFamily: 'Roboto',
   },
   joinedWriting:{
   top:16,
