@@ -8,10 +8,12 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
+  ScrollView,
 } from "react-native";
 import Logo from "../../../assets/images/CadmanLogoDark1.png";
 import cityImage from "../../../assets/images/city.png";
 import schoolImage from "../../../assets/images/school.png";
+import userImage from "../../../assets/images/user.png";
 import clubImage from "../../../assets/images/club.png";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
@@ -44,47 +46,45 @@ const ClubSignUpScreen = () => {
       style={styles.container}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.inner}>
-          <Image
-            source={Logo}
-            style={[styles.logo, { height: height * 0.3 }]}
-            resizeMode="contain"
-          />
-          <Text style={styles.h1}>Club Sign Up</Text>
-          <Text style={styles.h2}>Please enter the information below</Text>
-          <CustomDropDown
-            image={cityImage}
-            textInputValue="CITY"
-            options={["London", "Toronto"]}
-          />
-          <CustomDropDown
-            image={schoolImage}
-            textInputValue="SCHOOL"
-            options={["Western University", "Univeristy of Toronto"]}
-          />
-          <CustomDropDown
-            image={clubImage}
-            textInputValue="FACULTY"
-            options={["Science", "Business", "Engineering"]}
-          />
-          <CustomDropDown
-            image={clubImage}
-            textInputValue="FIELD"
-            options={["Software Engineer", "Medicine"]}
-          />
-          <CustomInput image={clubImage} placeholder="CLUB DESRCRIPTION" />
-          <CustomButton
-            text="SIGN UP"
-            onPress={onSignUpPressed}
-            style={{ padding: 30, alignSelf: "center" }}
-          />
-          <CustomButton
-            text="Already have an account? Sign In"
-            onPress={onLoginPressed}
-            type="TERTIARY"
-            style={{ padding: 10, alignSelf: "center" }}
-          />
-        </View>
+        <ScrollView>
+          <View style={styles.inner}>
+            <Text style={styles.h1}>Club Sign Up</Text>
+            <Text style={styles.h2}>Please enter the information below</Text>
+            <CustomInput image={userImage} placeholder="NAME" />
+            <CustomDropDown
+              image={cityImage}
+              textInputValue="CITY"
+              options={["London", "Toronto"]}
+            />
+            <CustomDropDown
+              image={schoolImage}
+              textInputValue="SCHOOL"
+              options={["Western University", "Univeristy of Toronto"]}
+            />
+            <CustomDropDown
+              image={clubImage}
+              textInputValue="FACULTY"
+              options={["Science", "Business", "Engineering"]}
+            />
+            <CustomDropDown
+              image={clubImage}
+              textInputValue="FIELD"
+              options={["Software Engineer", "Medicine"]}
+            />
+            <CustomInput image={clubImage} placeholder="CLUB DESRCRIPTION" />
+            <CustomButton
+              text="SIGN UP"
+              onPress={onSignUpPressed}
+              style={{ padding: 30, alignSelf: "center" }}
+            />
+            <CustomButton
+              text="Already have an account? Sign In"
+              onPress={onLoginPressed}
+              type="TERTIARY"
+              style={{ padding: 10, alignSelf: "center" }}
+            />
+          </View>
+        </ScrollView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );

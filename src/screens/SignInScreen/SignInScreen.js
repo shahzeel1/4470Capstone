@@ -17,14 +17,21 @@ import CustomButton from "../../components/CustomButton";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
-
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../firebase.js";
 const SignInScreen = () => {
   const { height } = useWindowDimensions();
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
   const onSignInPressed = () => {
-    navigation.navigate("ProjectSearchPage");
+    signInWithEmailAndPassword(auth, email, password)
+      .then((UserCredential) => {
+        const user = UserCredential.user;
+        console.log(user.email);
+        navigation.navigate("ProjectSearchPage");
+      })
+      .catch((error) => alert(error.message));
   };
   const onForgotPasswordPressed = () => {
     navigation.navigate("ForgotPassword");
@@ -42,10 +49,7 @@ const SignInScreen = () => {
   }
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
+    <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.inner}>
           <Image
@@ -58,8 +62,8 @@ const SignInScreen = () => {
           <CustomInput
             image={emailImage}
             placeholder="EMAIL"
-            value={username}
-            setValue={setUsername}
+            value={email}
+            setValue={setEmail}
             secureTextEntry={false}
           />
           <CustomInput

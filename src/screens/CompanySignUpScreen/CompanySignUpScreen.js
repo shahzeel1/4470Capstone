@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import {
   View,
   Text,
-  Image,
   StyleSheet,
   useWindowDimensions,
   TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
+  ScrollView,
 } from "react-native";
 import Logo from "../../../assets/images/CadmanLogoDark1.png";
 import cityImage from "../../../assets/images/city.png";
-import schoolImage from "../../../assets/images/school.png";
+import userImage from "../../../assets/images/user.png";
 import clubImage from "../../../assets/images/club.png";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
@@ -27,6 +27,9 @@ const CompanySignUpScreen = () => {
   const onLoginPressed = () => {
     navigation.navigate("SignIn");
   };
+  const onSignUpPressed = () => {
+    navigation.navigate("ProfilePage");
+  };
   let [fontsLoaded] = useFonts({
     Prompt_500Medium,
   });
@@ -41,26 +44,28 @@ const CompanySignUpScreen = () => {
       style={styles.container}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.inner}>
-          <Image
-            source={Logo}
-            style={[styles.logo, { height: height * 0.3 }]}
-            resizeMode="contain"
-          />
-          <Text style={styles.h1}>Company Sign Up</Text>
-          <Text style={styles.h2}>Please enter the information below</Text>
-          <CustomDropDown image={cityImage} textInputValue="CITY" />
-          <CustomDropDown image={clubImage} textInputValue="FIELD" />
-          <CustomDropDown image={clubImage} textInputValue="COMPANY SIZE" />
-          <CustomInput image={clubImage} placeholder="COMPANY DESRCRIPTION" />
-
-          <CustomButton
-            text="Already have an account? Sign In"
-            onPress={onLoginPressed}
-            type="TERTIARY"
-            style={{ padding: 10, alignSelf: "center" }}
-          />
-        </View>
+        <ScrollView>
+          <View style={styles.inner}>
+            <Text style={styles.h1}>Company Sign Up</Text>
+            <Text style={styles.h2}>Please enter the information below</Text>
+            <CustomInput image={userImage} placeholder="NAME" />
+            <CustomDropDown image={cityImage} textInputValue="CITY" />
+            <CustomDropDown image={clubImage} textInputValue="FIELD" />
+            <CustomDropDown image={clubImage} textInputValue="COMPANY SIZE" />
+            <CustomInput image={clubImage} placeholder="COMPANY DESRCRIPTION" />
+            <CustomButton
+              text="SIGN UP"
+              onPress={onSignUpPressed}
+              style={{ padding: 30, alignSelf: "center" }}
+            />
+            <CustomButton
+              text="Already have an account? Sign In"
+              onPress={onLoginPressed}
+              type="TERTIARY"
+              style={{ padding: 10, alignSelf: "center" }}
+            />
+          </View>
+        </ScrollView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );

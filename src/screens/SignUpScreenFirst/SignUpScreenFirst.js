@@ -14,12 +14,20 @@ import emailImage from "../../../assets/images/email2.png";
 import passwordImage from "../../../assets/images/padlock.png";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
+import userImage from "../../../assets/images/user.png";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
+import { auth } from "../../../firebase.js";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  UserCredential,
+} from "firebase/auth";
+import { useEffect } from "react/cjs/react.development";
 const SignUpScreenFirst = () => {
   const { height } = useWindowDimensions();
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
   const onSignInPressed = () => {
@@ -28,9 +36,16 @@ const SignUpScreenFirst = () => {
   const onForgotPasswordPressed = () => {
     navigation.navigate("ForgotPassword");
   };
-  const onSignUpPressed = async () => {
-    console.log("Trying to signup with user: " + username);
-    navigation.navigate("SignUp");
+  const onSignUpPressed = () => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((UserCredential) => {
+        const user = UserCredential.user;
+        console.log(user.email);
+        navigation.navigate("SignUp");
+      })
+      .catch((error) =>
+        alert("Email already exists. Please Sign in to continue.")
+      );
   };
 
   let [fontsLoaded] = useFonts({
@@ -42,10 +57,7 @@ const SignUpScreenFirst = () => {
   }
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
+    <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.inner}>
           <Image
@@ -55,11 +67,12 @@ const SignUpScreenFirst = () => {
           />
           <Text style={styles.h1}>Sign Up</Text>
           <Text style={styles.h2}>Please create an account</Text>
+
           <CustomInput
             image={emailImage}
             placeholder="EMAIL"
-            value={username}
-            setValue={setUsername}
+            value={email}
+            setValue={setEmail}
             secureTextEntry={false}
           />
           <CustomInput
