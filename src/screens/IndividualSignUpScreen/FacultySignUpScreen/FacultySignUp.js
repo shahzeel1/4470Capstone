@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
   inner: {
     padding: 24,
     flex: 1,
-    justifyContent: "flex-end",
-    marginTop: "50%",
+    justifyContent: "flex-start",
+    marginBottom: "50%",
   },
   logo: {
     width: "70%",

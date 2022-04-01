@@ -69,7 +69,6 @@ const ProfessionalSignUp = () => {
             </View>
         
       </TouchableWithoutFeedback>
-      <View style={{height:500}}/>
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -81,10 +80,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#2A3950",
   },
   inner: {
-    padding: 24,
+    padding: 12,
     flex: 1,
     justifyContent: "flex-start",
-    marginTop: "50%",
+    marginBottom: "120%"
   },
   logo: {
     width: "70%",

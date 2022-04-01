@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   View,
+  ScrollView,
   Text,
   Image,
   StyleSheet,
@@ -44,6 +45,7 @@ const StudentSignUp = () => {
       style={styles.container}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <ScrollView Style={styles.ScrollView}>
         <View style={styles.inner}>
           <Text style={styles.h1}>Student Signup</Text>
           <Text style={styles.h2}>Please enter the information below</Text>
@@ -62,6 +64,7 @@ const StudentSignUp = () => {
             style={{ padding: 10, alignSelf: "center" }}
           />
         </View>
+      </ScrollView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
@@ -75,8 +78,8 @@ const styles = StyleSheet.create({
   inner: {
     padding: 24,
     flex: 1,
-    justifyContent: "flex-end",
-    marginTop: "50%",
+    justifyContent: "flex-start",
+    marginBottom: "50%",
   },
   logo: {
     width: "70%",
