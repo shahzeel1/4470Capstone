@@ -37,7 +37,7 @@ const SignInScreen = () => {
     navigation.navigate("ForgotPassword");
   };
   const onSignUpPressed = () => {
-    navigation.navigate("SignUp");
+    navigation.navigate("SignUpScreenFirst");
   };
 
   let [fontsLoaded] = useFonts({
