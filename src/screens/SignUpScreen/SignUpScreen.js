@@ -16,6 +16,8 @@ import CustomButton from "../../components/CustomButton";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
+import { getDatabase, ref, onValue, set } from "firebase/database";
+import { auth } from "../../../firebase";
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
@@ -23,11 +25,17 @@ const SignUpScreen = () => {
     navigation.navigate("SignIn");
   };
   const onOrgPressed = () => {
+    const database = getDatabase();
+    console.log(database);
+    const reference = ref(database, "users/" + auth.currentUser.uid);
+    set(reference, {
+      accountType: "organization",
+    });
     navigation.navigate("ClubOrCompany");
   };
   const onIndivPressed = () => {
-    navigation.navigate("IndividualSignUp")
-  }
+    navigation.navigate("IndividualSignUp");
+  };
 
   let [fontsLoaded] = useFonts({
     Prompt_500Medium,
