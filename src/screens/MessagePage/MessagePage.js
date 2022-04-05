@@ -38,7 +38,7 @@ const MessagePage = () => {
     navigation.navigate("ProjectSearchPage");
   };
   const onNotificationPressed = () => {
-    navigation.navigate("Notification");
+    navigation.navigate("Notifications");
   };
   const onProfilePressed = () => {
     navigation.navigate("ProfilePage");
