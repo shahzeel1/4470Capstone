@@ -31,7 +31,7 @@ const ProjectSearchPage = () => {
   const onProjectSearchPagePressed = () => {};
   const onBackPressed = () => {};
   const onNotificationPressed = () => {
-    navigation.navigate("Notification");
+    navigation.navigate("Notifications");
   };
   const onProfilePressed = () => {
     navigation.navigate("ProfilePage");
