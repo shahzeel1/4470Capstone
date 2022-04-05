@@ -14,7 +14,6 @@ import emailImage from "../../../assets/images/email2.png";
 import passwordImage from "../../../assets/images/padlock.png";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
-import userImage from "../../../assets/images/user.png";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
@@ -43,9 +42,7 @@ const SignUpScreenFirst = () => {
         console.log(user.email);
         navigation.navigate("SignUp");
       })
-      .catch((error) =>
-        alert("Email already exists. Please Sign in to continue.")
-      );
+      .catch((error) => alert(error.message));
   };
 
   let [fontsLoaded] = useFonts({
