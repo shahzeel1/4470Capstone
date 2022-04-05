@@ -32,7 +32,7 @@ const ProjectPage = () => {
     navigation.navigate("Home");
   };
   const onNotificationPressed = () => {
-    navigation.navigate("Notification");
+    navigation.navigate("Notifications");
   };
   const onProfilePressed = () => {
     navigation.navigate("ProfilePage");
