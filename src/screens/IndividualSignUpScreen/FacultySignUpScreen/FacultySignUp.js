@@ -23,16 +23,43 @@ import CustomDropDown from "../../../components/CustomDropDown";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
+import { getDatabase, ref, onValue, set } from "firebase/database";
+import { auth } from "../../../../firebase";
 
 const FacultySignUp = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
+
+//user info to send to database
+const [name, setName] = useState("");
+const [faculty, setFaculty] = useState("");
+const [school, setSchool] = useState("");
+const [areaOfStudy, setAreaOfStudy] = useState("");
+const [location, setLocation] = useState("");
+const [experience, setExperience] = useState("");
+const [interest, setInterest] = useState("");
+const [projectPreference, setprojectPreference] = useState("");
+
+
 
   const onLoginPressed = () => {
     navigation.navigate("SignIn");
   };
   const onSignUpPressed = () => {
     navigation.navigate("ProfilePage");
+    const database = getDatabase();
+    const reference = ref(database, "Users/" + auth.currentUser.uid);
+    set(reference, {
+      accountType: "individualFaculty",
+      name: name,
+      faculty:faculty,
+      school:school,
+      areaOfStudy:areaOfStudy,
+      experience:experience,
+      interest:interest,
+      location: location,
+      projectPreference: projectPreference,
+    });
   };
   let [fontsLoaded] = useFonts({
     Prompt_500Medium,
@@ -53,17 +80,18 @@ const FacultySignUp = () => {
             <Text style={styles.h1}>Faculty Sign Up</Text>
             <Text style={styles.h2}>Please enter the information below</Text>
 
-            <CustomInput image={userImage} placeholder="NAME" />
-            <CustomDropDown image={Book} textInputValue="FACULTY" />
-            <CustomDropDown image={Book} textInputValue="AREA OF STUDY" />
-            <CustomDropDown image={schoolImage} textInputValue="SCHOOL" />
-            <CustomDropDown image={cityImage} textInputValue="CITY" />
+            <CustomInput image={userImage} placeholder="NAME" value={name} setValue={setName} />
+            <CustomDropDown image={Book} textInputValue="FACULTY" value={faculty} setValue={setFaculty} />
+            <CustomDropDown image={Book} textInputValue="AREA OF STUDY" value={areaOfStudy} setValue={setAreaOfStudy} />
+            <CustomDropDown image={schoolImage} textInputValue="SCHOOL" value={school} setValue={setSchool} />
+            <CustomDropDown image={cityImage} textInputValue="CITY" value={location} setValue={setLocation}/>
             <CustomDropDown
               image={clubImage}
               textInputValue="WORK/CLUB EXPERIENCE"
+              value={experience} setValue={setExperience}
             />
-            <CustomDropDown image={Like} textInputValue="INTERESTS" />
-            <CustomInput image={Search} placeholder="PROJECT PREFERENCE" />
+            <CustomDropDown image={Like} textInputValue="INTERESTS"  value={interest} setValue={setInterest} />
+            <CustomInput image={Search} placeholder="PROJECT PREFERENCE" value={projectPreference} setValue={setprojectPreference}  />
             <CustomButton
               text="SIGN UP"
               onPress={onSignUpPressed}
