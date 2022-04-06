@@ -21,16 +21,38 @@ import CustomDropDown from "../../components/CustomDropDown";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
+import { getDatabase, ref, onValue, set } from "firebase/database";
+import { auth } from "../../../firebase";
 
 const ClubSignUpScreen = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
 
+//user info to send to database
+  const [companyName, setCompanyName] = useState("");
+  const [location, setLocation] = useState("");
+  const [feild, setFeild] = useState("");
+  const [description, setDescription] = useState("");
+  const [faculty, setFaculty] = useState("");
+  const [school, setSchool] = useState("");
+
+
   const onLoginPressed = () => {
     navigation.navigate("SignIn");
   };
   const onSignUpPressed = () => {
-    navigation.navigate("SignIn");
+    navigation.navigate("ProjectSearchPage");
+    const database = getDatabase();
+    const reference = ref(database, "Users/" + auth.currentUser.uid);
+    set(reference, {
+      accountType: "club",
+      name: companyName,
+      location: location,
+      feild: feild,
+      faculty: faculty,
+      school:school,
+      description: description,
+    });
   };
   let [fontsLoaded] = useFonts({
     Prompt_500Medium,
@@ -50,28 +72,39 @@ const ClubSignUpScreen = () => {
           <View style={styles.inner}>
             <Text style={styles.h1}>Club Sign Up</Text>
             <Text style={styles.h2}>Please enter the information below</Text>
-            <CustomInput image={userImage} placeholder="NAME" />
+            <CustomInput image={userImage} placeholder="NAME" value={companyName} setValue={setCompanyName}/>
             <CustomDropDown
               image={cityImage}
               textInputValue="CITY"
               options={["London", "Toronto"]}
+              value={location} 
+              setValue={setLocation} 
             />
             <CustomDropDown
               image={schoolImage}
               textInputValue="SCHOOL"
               options={["Western University", "Univeristy of Toronto"]}
+              value={school} 
+              setValue={setSchool} 
             />
             <CustomDropDown
               image={clubImage}
               textInputValue="FACULTY"
               options={["Science", "Business", "Engineering"]}
+              value={faculty} 
+              setValue={setFaculty} 
             />
             <CustomDropDown
               image={clubImage}
               textInputValue="FIELD"
               options={["Software Engineer", "Medicine"]}
+              value={feild} 
+              setValue={setFeild} 
             />
-            <CustomInput image={clubImage} placeholder="CLUB DESRCRIPTION" />
+            <CustomInput image={clubImage}  
+              value={description} 
+              setValue={setDescription}  
+              placeholder="CLUB DESRCRIPTION" />
             <CustomButton
               text="SIGN UP"
               onPress={onSignUpPressed}
