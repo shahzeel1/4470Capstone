@@ -25,12 +25,6 @@ const SignUpScreen = () => {
     navigation.navigate("SignIn");
   };
   const onOrgPressed = () => {
-    const database = getDatabase();
-    console.log(database);
-    const reference = ref(database, "users/" + auth.currentUser.uid);
-    set(reference, {
-      accountType: "organization",
-    });
     navigation.navigate("ClubOrCompany");
   };
   const onIndivPressed = () => {
