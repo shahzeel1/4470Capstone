@@ -11,6 +11,8 @@ const CustomDropDown = ({
   placeholder = textInputValue,
   answer,
   styleSelect,
+  setValue,
+  value,
 }) => {
   let index = 0;
   const [selection, setSelection] = useState("");
@@ -24,36 +26,37 @@ const CustomDropDown = ({
         <Image source={image} style={styles.iconCreateProject} />
         <ModalSelector
           data={data}
-          onChange={(option) => {
-            setSelection(option.label);
+          onChange={(data) => {
+              setValue(data.label);
           }}
           style={styles.input}
         >
           <TextInput
             placeholder={placeholder}
             style={styles.textCreateProject}
-            value={selection}
+            value={value}
+            onChangeText={setValue}
             placeholderTextColor={"#0F6BAC"}
           />
         </ModalSelector>
       </View>
     );
   } else {
-    console.log(selection);
     return (
       <View style={styles.container}>
         <Image source={image} style={styles.icon} />
         <ModalSelector
           data={data}
-          onChange={(option) => {
-            setSelection(option.label);
+          onChange={(data) => {
+              setValue(data.label);
           }}
           style={styles.input}
         >
           <TextInput
             placeholder={placeholder}
             style={styles.textCreateProject}
-            value={selection}
+            value={value}
+            onChangeText={setValue}
             placeholderTextColor={"#0F6BAC"}
           />
         </ModalSelector>
