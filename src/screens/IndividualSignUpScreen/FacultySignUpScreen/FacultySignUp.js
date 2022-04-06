@@ -46,7 +46,7 @@ const [projectPreference, setprojectPreference] = useState("");
     navigation.navigate("SignIn");
   };
   const onSignUpPressed = () => {
-    navigation.navigate("ProfilePage");
+    navigation.navigate("ProfileSearchPage");
     const database = getDatabase();
     const reference = ref(database, "Users/" + auth.currentUser.uid);
     set(reference, {
