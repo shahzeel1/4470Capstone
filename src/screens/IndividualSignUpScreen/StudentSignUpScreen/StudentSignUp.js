@@ -10,6 +10,7 @@ import {
   Keyboard,
   KeyboardAvoidingView,
 } from "react-native";
+import userImage from "../../../../assets/images/user.png";
 import Book from "../../../../assets/images/book.png";
 import Like from "../../../../assets/images/like.png";
 import Search from "../../../../assets/images/search.png";
@@ -23,10 +24,27 @@ import CustomDropDown from "../../../components/CustomDropDown";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
+import { getDatabase, ref, onValue, set } from "firebase/database";
+import { auth } from "../../../../firebase";
+
 
 const StudentSignUp = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
+
+//user info to send to database
+const [name, setName] = useState("");
+const [title, setTitle] = useState("");
+const [major, setMajor] = useState("");
+const [minor, setMinor] = useState("");
+const [school, setSchool] = useState("");
+const [location, setLocation] = useState("");
+const [experience, setExperience] = useState("");
+const [interest, setInterest] = useState("");
+const [projectPreference, setProjectPreference] = useState("");
+
+
+
 
   const onLoginPressed = () => {
     navigation.navigate("SignIn");
@@ -34,6 +52,24 @@ const StudentSignUp = () => {
   let [fontsLoaded] = useFonts({
     Prompt_500Medium,
   });
+
+  const onSignUpPressed = () => {
+    navigation.navigate("ProjectSearchPage");
+    const database = getDatabase();
+    const reference = ref(database, "Users/" + auth.currentUser.uid);
+    set(reference, {
+      accountType: "individualProfessional",
+      name: name,
+      school:school,
+      title:title,
+      experience:experience,
+      interest:interest,
+      location: location,
+      projectPreference: projectPreference,
+      major:major,
+      minor:minor,
+    });
+  };
 
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -49,14 +85,19 @@ const StudentSignUp = () => {
         <View style={styles.inner}>
           <Text style={styles.h1}>Student Signup</Text>
           <Text style={styles.h2}>Please enter the information below</Text>
-          <CustomDropDown image={Book} textInputValue="MAJOR" />
-          <CustomDropDown image={Book} textInputValue="MINOR" />
-          <CustomDropDown image={schoolImage} textInputValue="SCHOOL" />
-          <CustomDropDown image={cityImage} textInputValue="CITY" />
-          <CustomDropDown image={clubImage} textInputValue="WORK/CLUB EXPERIENCE" />
-          <CustomDropDown image={Like} textInputValue="INTERESTS" />
-          <CustomInput image={Search} placeholder="PROJECT PREFERENCE" />
-
+          <CustomInput image={userImage} placeholder="NAME" value={name} setValue={setName} />
+          <CustomDropDown image={Book} textInputValue="MAJOR"  value={major} setValue={setMajor} />
+          <CustomDropDown image={Book} textInputValue="MINOR"  value={minor} setValue={setMinor} />
+          <CustomDropDown image={schoolImage} textInputValue="SCHOOL" value={school} setValue={setSchool}  />
+          <CustomDropDown image={cityImage} textInputValue="CITY"  value={location} setValue={setLocation} />
+          <CustomDropDown image={clubImage} textInputValue="WORK/CLUB EXPERIENCE"  value={experience} setValue={setExperience}  />
+          <CustomDropDown image={Like} textInputValue="INTERESTS"  value={interest} setValue={setInterest}  />
+          <CustomInput image={Search} placeholder="PROJECT PREFERENCE"  value={projectPreference} setValue={setProjectPreference} />
+          <CustomButton
+                  text="SIGN UP"
+                  onPress={onSignUpPressed}
+                  style={{ padding: 30, alignSelf: "center" }}
+                />
           <CustomButton
             text="Already have an account? Sign In"
             onPress={onLoginPressed}
