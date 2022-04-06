@@ -19,16 +19,35 @@ import CustomDropDown from "../../components/CustomDropDown";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
+import { getDatabase, ref, onValue, set } from "firebase/database";
+import { auth } from "../../../firebase";
 
 const CompanySignUpScreen = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
+
+
+  const [companyName, setCompanyName] = useState("");
+  const [location, setLocation] = useState("");
+  const [feild, setFeild] = useState("");
+  const [companySize, setCompanySize] = useState("");
+  const [description, setDescription] = useState("");
 
   const onLoginPressed = () => {
     navigation.navigate("SignIn");
   };
   const onSignUpPressed = () => {
     navigation.navigate("ProfilePage");
+    const database = getDatabase();
+    const reference = ref(database, "Users/" + auth.currentUser.uid);
+    set(reference, {
+      accountType: "company",
+      name: companyName,
+      location: location,
+      feild: feild,
+      companySize: companySize,
+      description: description,
+    });
   };
   let [fontsLoaded] = useFonts({
     Prompt_500Medium,
@@ -48,11 +67,11 @@ const CompanySignUpScreen = () => {
           <View style={styles.inner}>
             <Text style={styles.h1}>Company Sign Up</Text>
             <Text style={styles.h2}>Please enter the information below</Text>
-            <CustomInput image={userImage} placeholder="NAME" />
-            <CustomDropDown image={cityImage} textInputValue="CITY" />
-            <CustomDropDown image={clubImage} textInputValue="FIELD" />
-            <CustomDropDown image={clubImage} textInputValue="COMPANY SIZE" />
-            <CustomInput image={clubImage} placeholder="COMPANY DESRCRIPTION" />
+            <CustomInput image={userImage} placeholder="NAME" type="text" value={companyName} setValue={setCompanyName}/>
+            <CustomDropDown image={cityImage} textInputValue="CITY" type="text" value={location} setValue={setLocation} />
+            <CustomDropDown image={clubImage} textInputValue="FIELD" type="text" value={feild} setValue={setFeild}/>
+            <CustomDropDown image={clubImage} textInputValue="COMPANY SIZE" type="text"  value={companySize} setValue={setCompanySize} />
+            <CustomInput image={clubImage} placeholder="COMPANY DESRCRIPTION" type="text" value={description} setValue={setDescription}/>
             <CustomButton
               text="SIGN UP"
               onPress={onSignUpPressed}
