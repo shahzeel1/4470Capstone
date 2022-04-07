@@ -24,41 +24,51 @@ import CustomButton from "../../components/CustomButton";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
-import { getDatabase, ref, onValue, set, get } from "firebase/database";
+import { getDatabase, ref, onValue, set, get} from "firebase/database";
 import { render } from "react-dom";
 
+
+
 const ProjectSearchPage = () => {
-  // const [waitingForData, setWaitingForData] = React.useState(true);
-  const [projectsPrint, setProjectsPrint] = useState("");
 
-  const getData = () => {
-    var projectLoopPrint = [];
-    const database = getDatabase();
-    const projectsRef = ref(database, "Projects");
-    onValue(projectsRef, (snapshot) => {
-      snapshot.forEach((childSnapshot) => {
-        let item = childSnapshot.val();
-        console.log("here");
-        console.log(item);
-        item.key = childSnapshot.key;
-        projectLoopPrint.push(
-          <SearchProjectDisplay
-            key={childSnapshot.key}
-            location={childSnapshot.val().location}
-            duration={childSnapshot.val().duration}
-            projectName={childSnapshot.val().name}
-            posted={childSnapshot.val().posted}
-            roles={childSnapshot.val().roles}
-            Organization={childSnapshot.val().Organization}
-          />
-        );
-      });
-      //setWaitingForData(React.useState(false));
-    });
-    console.log(projectLoopPrint);
-    return projectLoopPrint;
+ // const [waitingForData, setWaitingForData] = React.useState(true);
+ const [projectsPrint, setProjectsPrint] = useState("");
+
+ 
+
+ const getData = () => {
+
+  var projectLoopPrint = [];
+      const database =  getDatabase();
+      const projectsRef =  ref(database,'Projects');
+      onValue(projectsRef,  (snapshot)  =>  {
+          const data = snapshot.val();
+          snapshot.forEach(childSnapshot => {
+                  let item=childSnapshot.val();
+                  item.key=childSnapshot.key;
+                  projectLoopPrint.push( 
+                    <SearchProjectDisplay 
+                      location = {childSnapshot.val().location}
+                      duration = {childSnapshot.val().duration}
+                      projectName ={childSnapshot.val().name}
+                      posted = {childSnapshot.val().posted}
+                      roles = {childSnapshot.val().roles}
+                      Organization= {childSnapshot.val().Organization}
+                    />
+                  )
+  
+  
+                });
+                 //setWaitingForData(React.useState(false));
+                 
+        }
+  
+  
+      ) 
+      return projectLoopPrint;
   };
-
+  
+  
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
   const onProjectSearchPagePressed = () => {};
@@ -85,9 +95,13 @@ const ProjectSearchPage = () => {
     return <AppLoading />;
   }
 
-  //connect db
 
-  //get all project in a an array of SearchProjectDisplay
+//connect db
+ 
+    //get all project in a an array of SearchProjectDisplay
+
+
+
 
   return (
     <KeyboardAvoidingView
@@ -100,7 +114,7 @@ const ProjectSearchPage = () => {
 
       <ScrollView Style={styles.scrollView}>
         {getData()}
-
+    
         <Text> </Text>
         <Text> </Text>
         <Text> </Text>
@@ -141,6 +155,7 @@ const ProjectSearchPage = () => {
     </KeyboardAvoidingView>
   );
 };
+
 
 const styles = StyleSheet.create({
   headBar: {
