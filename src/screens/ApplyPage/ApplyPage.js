@@ -27,6 +27,8 @@ import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
 import CustomInput from "../../components/CustomInput";
 import CustomDropDown from "../../components/CustomDropDown";
+import { getDatabase, ref, onValue, set } from "firebase/database";
+import { auth } from "../../../firebase";
 
 
 const ApplyPage = () => {
@@ -44,11 +46,21 @@ const ApplyPage = () => {
     navigation.navigate("ForgotPassword");
   };
   const onApplyPressed = () => {
-    navigation.navigate();
+    navigation.navigate("ProjectSearchPage");
+    const database = getDatabase();
+    const reference = ref(database, "Projects/" + auth.currentUser.uid);
+    set(reference, {
+      userId:auth.currentUser.uid,
+      applicantName : applicantName,
+      applicantRole: applicantRole,
+      applicantSchool: applicantSchool,
+      applicantCity: applicantCity,
+      applicantMessage: applicantMessage,
+    });
   };
 
   const onBackPressed = () => {
-    navigation.navigate("SearchProjectPage");
+    navigation.navigate("ProjectSearchPage");
   };
 
   let [fontsLoaded] = useFonts({
@@ -170,3 +182,4 @@ const ApplyPage = () => {
   });
   
 export default ApplyPage;
+
