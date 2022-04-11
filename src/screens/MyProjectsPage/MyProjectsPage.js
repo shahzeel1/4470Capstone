@@ -65,26 +65,15 @@ const MyProjectsPage = () => {
         <Text style={styles.headBarText}>My Projects</Text>
       </View>
       <ScrollView Style={styles.scrollView}>
-      <MyProjectsDisplay>
+        <MyProjectsDisplay></MyProjectsDisplay>
+        <MyProjectsDisplay></MyProjectsDisplay>
+        <MyProjectsDisplay></MyProjectsDisplay>
+        <MyProjectsDisplay></MyProjectsDisplay>
+        <MyProjectsDisplay></MyProjectsDisplay>
 
-      </MyProjectsDisplay>
-      <MyProjectsDisplay>
-        
-      </MyProjectsDisplay>
-      <MyProjectsDisplay>
-        
-      </MyProjectsDisplay>
-      <MyProjectsDisplay>
-        
-      </MyProjectsDisplay>
-      <MyProjectsDisplay>
-        
-      </MyProjectsDisplay>
-      
-            <Text>  </Text>
-            <Text>  </Text>
-            <Text>  </Text>
-
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
       </ScrollView>
 
       <View style={styles.bottomBar}>
@@ -146,7 +135,7 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     backgroundColor: "#2A3950",
-    flex:1,
+    flex: 1,
   },
   container: {
     flex: 1,

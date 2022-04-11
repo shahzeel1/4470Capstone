@@ -39,7 +39,7 @@ const SignUpScreenFirst = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((UserCredential) => {
         const user = UserCredential.user;
-        console.log(user.email);
+        console.log(user.email + " account created");
         navigation.navigate("SignUp");
       })
       .catch((error) => alert(error.message));

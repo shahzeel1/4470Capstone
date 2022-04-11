@@ -47,7 +47,6 @@ const SignInScreen = () => {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
-
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

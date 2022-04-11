@@ -53,7 +53,7 @@ const StudentSignUp = () => {
     navigation.navigate("StudentSignUp2");
     const database = getDatabase();
     const reference = ref(database, "Users/" + auth.currentUser.uid);
-    update(reference, {
+    set(reference, {
       accountType: "Student",
       name: name,
       major: major,
