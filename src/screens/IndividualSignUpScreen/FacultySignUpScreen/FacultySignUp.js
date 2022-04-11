@@ -30,35 +30,30 @@ const FacultySignUp = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
 
-//user info to send to database
-const [name, setName] = useState("");
-const [faculty, setFaculty] = useState("");
-const [school, setSchool] = useState("");
-const [areaOfStudy, setAreaOfStudy] = useState("");
-const [location, setLocation] = useState("");
-const [experience, setExperience] = useState("");
-const [interest, setInterest] = useState("");
-const [projectPreference, setprojectPreference] = useState("");
-
-
+  //user info to send to database
+  const [name, setName] = useState("");
+  const [faculty, setFaculty] = useState("");
+  const [school, setSchool] = useState("");
+  const [areaOfStudy, setAreaOfStudy] = useState("");
+  const [location, setLocation] = useState("");
+  const [experience, setExperience] = useState("");
+  const [interest, setInterest] = useState("");
+  const [projectPreference, setprojectPreference] = useState("");
 
   const onLoginPressed = () => {
     navigation.navigate("SignIn");
   };
-  const onSignUpPressed = () => {
-    navigation.navigate("ProfileSearchPage");
+  const onNextPressed = () => {
+    navigation.navigate("FacultySignUp2");
     const database = getDatabase();
     const reference = ref(database, "Users/" + auth.currentUser.uid);
     set(reference, {
-      accountType: "individualFaculty",
+      accountType: "Faculty",
       name: name,
-      faculty:faculty,
-      school:school,
-      areaOfStudy:areaOfStudy,
-      experience:experience,
-      interest:interest,
-      location: location,
-      projectPreference: projectPreference,
+      faculty: faculty,
+      areaOfStudy: areaOfStudy,
+      school: school,
+      email: auth.currentUser.email,
     });
   };
   let [fontsLoaded] = useFonts({
@@ -80,21 +75,56 @@ const [projectPreference, setprojectPreference] = useState("");
             <Text style={styles.h1}>Faculty Sign Up</Text>
             <Text style={styles.h2}>Please enter the information below</Text>
 
-            <CustomInput image={userImage} placeholder="NAME" value={name} setValue={setName} />
-            <CustomDropDown image={Book} textInputValue="FACULTY" value={faculty} setValue={setFaculty} />
-            <CustomDropDown image={Book} textInputValue="AREA OF STUDY" value={areaOfStudy} setValue={setAreaOfStudy} />
-            <CustomDropDown image={schoolImage} textInputValue="SCHOOL" value={school} setValue={setSchool} />
-            <CustomDropDown image={cityImage} textInputValue="CITY" value={location} setValue={setLocation}/>
-            <CustomDropDown
-              image={clubImage}
-              textInputValue="WORK/CLUB EXPERIENCE"
-              value={experience} setValue={setExperience}
+            <CustomInput
+              image={userImage}
+              placeholder="NAME"
+              value={name}
+              setValue={setName}
             />
-            <CustomDropDown image={Like} textInputValue="INTERESTS"  value={interest} setValue={setInterest} />
-            <CustomInput image={Search} placeholder="PROJECT PREFERENCE" value={projectPreference} setValue={setprojectPreference}  />
+            <CustomDropDown
+              image={Book}
+              textInputValue="FACULTY"
+              value={faculty}
+              setValue={setFaculty}
+              options={[
+                "Arts and Humanities",
+                "Business",
+                "Education",
+                "Engineering",
+                "Science",
+                "Other",
+              ]}
+            />
+            <CustomDropDown
+              image={Book}
+              textInputValue="AREA OF STUDY"
+              value={areaOfStudy}
+              options={[
+                "Business",
+                "Pre-Med",
+                "Social Sciences",
+                "Sciences",
+                "Engineering",
+                "Computer Science",
+                "Other",
+              ]}
+              setValue={setAreaOfStudy}
+            />
+            <CustomDropDown
+              image={schoolImage}
+              textInputValue="SCHOOL"
+              value={school}
+              setValue={setSchool}
+              options={[
+                "Western University",
+                "Univeristy of Toronto",
+                "University of Waterloo",
+                "Other",
+              ]}
+            />
             <CustomButton
-              text="SIGN UP"
-              onPress={onSignUpPressed}
+              text="NEXT"
+              onPress={onNextPressed}
               style={{ padding: 30, alignSelf: "center" }}
             />
             <CustomButton

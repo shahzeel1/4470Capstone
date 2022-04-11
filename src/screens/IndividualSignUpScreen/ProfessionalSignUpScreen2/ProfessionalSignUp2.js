@@ -23,10 +23,10 @@ import CustomDropDown from "../../../components/CustomDropDown";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
-import { getDatabase, ref, onValue, set } from "firebase/database";
+import { getDatabase, ref, onValue, set, update } from "firebase/database";
 import { auth } from "../../../../firebase";
 
-const ProfessionalSignUp = () => {
+const ProfessionalSignUp2 = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
 
@@ -41,17 +41,11 @@ const ProfessionalSignUp = () => {
   const [interest, setInterest] = useState("");
   const [projectPreference, setProjectPreference] = useState("");
 
-  const onNextPressed = () => {
-    navigation.navigate("ProfessionalSignUp2");
+  const onSignUpPressed = () => {
+    navigation.navigate("ProjectSearchPage");
     const database = getDatabase();
     const reference = ref(database, "Users/" + auth.currentUser.uid);
-    set(reference, {
-      accountType: "professional",
-      companyName: companyName,
-      interest: interest,
-      location: location,
-      projectPreference: projectPreference,
-      email: auth.currentUser.email,
+    update(reference, {
       school: school,
       experience: experience,
       major: major,
@@ -83,49 +77,59 @@ const ProfessionalSignUp = () => {
           <View style={styles.inner}>
             <Text style={styles.h1}>Professional Signup</Text>
             <Text style={styles.h2}>Please enter the information below</Text>
-            <CustomInput
-              image={schoolImage}
-              placeholder="COMPANY"
-              value={companyName}
-              setValue={setCompanyName}
-            />
+
             <CustomDropDown
-              image={cityImage}
-              textInputValue="CITY"
-              value={location}
-              setValue={setLocation}
+              image={schoolImage}
+              textInputValue="SCHOOL"
+              value={school}
+              setValue={setSchool}
               options={[
-                "Toronto",
-                "London",
-                "Calgary",
-                "Montreal",
-                "Ottawa",
+                "Western University",
+                "Univeristy of Toronto",
+                "University of Waterloo",
+                "Other",
+              ]}
+            />
+
+            <CustomDropDown
+              image={Book}
+              textInputValue="MAJOR"
+              value={major}
+              setValue={setMajor}
+              options={[
+                "Business",
+                "Pre-Med",
+                "Social Sciences",
+                "Sciences",
+                "Engineering",
+                "Computer Science",
                 "Other",
               ]}
             />
             <CustomDropDown
-              image={Like}
-              textInputValue="INTERESTS"
-              value={interest}
-              setValue={setInterest}
+              image={Book}
+              textInputValue="MINOR"
+              value={minor}
+              setValue={setMinor}
               options={[
-                "Coding",
-                "AI",
-                "Development",
-                "Psychology",
-                "Finance",
-                "Investing",
+                "Business",
+                "Pre-Med",
+                "Social Sciences",
+                "Sciences",
+                "Engineering",
+                "Computer Science",
+                "Other",
               ]}
             />
             <CustomInput
-              image={Search}
-              placeholder="PROJECT PREFERENCE"
-              value={projectPreference}
-              setValue={setProjectPreference}
+              image={clubImage}
+              placeholder="WORK/CLUB EXPERIENCE"
+              value={experience}
+              setValue={setExperience}
             />
             <CustomButton
-              text="NEXT"
-              onPress={onNextPressed}
+              text="SIGN UP"
+              onPress={onSignUpPressed}
               style={{ padding: 30, alignSelf: "center" }}
             />
             <CustomButton
@@ -180,4 +184,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfessionalSignUp;
+export default ProfessionalSignUp2;

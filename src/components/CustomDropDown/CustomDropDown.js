@@ -27,7 +27,7 @@ const CustomDropDown = ({
         <ModalSelector
           data={data}
           onChange={(data) => {
-              setValue(data.label);
+            setValue(data.label);
           }}
           style={styles.input}
         >
@@ -48,7 +48,7 @@ const CustomDropDown = ({
         <ModalSelector
           data={data}
           onChange={(data) => {
-              setValue(data.label);
+            setValue(data.label);
           }}
           style={styles.input}
         >

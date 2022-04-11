@@ -11,7 +11,7 @@ import ClubOrCompany from "../screens/ClubOrCompanyScreen.js/ClubOrCompany";
 import ClubSignUpScreen from "../screens/ClubSignUpScreen";
 import CompanySignUpScreen from "../screens/CompanySignUpScreen";
 import IndividualSignUp from "../screens/IndividualSignUpScreen";
-import StudentSignUp from "../screens/IndividualSignUpScreen/StudentSignUpScreen/StudentSignUp";
+import StudentSignUp from "../screens/IndividualSignUpScreen/StudentSignUpScreen";
 import FacultySignUp from "../screens/IndividualSignUpScreen/FacultySignUpScreen/FacultySignUp";
 import ProfessionalSignUp from "../screens/IndividualSignUpScreen/ProfessionalSignUpScreen/ProfessionalSignUp";
 import CreateProject from "../screens/CreateProject";
@@ -21,6 +21,9 @@ import ProjectSearchPage from "../screens/ProjectSearchPage";
 import MessagePage from "../screens/MessagePage";
 import MyProjectsPage from "../screens/MyProjectsPage";
 import SignUpScreenFirst from "../screens/SignUpScreenFirst";
+import StudentSignUp2 from "../screens/IndividualSignUpScreen/StudentSignUp2";
+import FacultySignUp2 from "../screens/IndividualSignUpScreen/FacultySignUpScreen2";
+import ProfessionalSignUp2 from "../screens/IndividualSignUpScreen/ProfessionalSignUpScreen2";
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +46,12 @@ const Navigation = () => {
         <Stack.Screen name="CreateProject" component={CreateProject} />
         <Stack.Screen name="StudentSignUp" component={StudentSignUp} />
         <Stack.Screen name="FacultySignUp" component={FacultySignUp} />
+        <Stack.Screen name="StudentSignUp2" component={StudentSignUp2} />
+        <Stack.Screen name="FacultySignUp2" component={FacultySignUp2} />
+        <Stack.Screen
+          name="ProfessionalSignUp2"
+          component={ProfessionalSignUp2}
+        />
         <Stack.Screen
           name="ProfessionalSignUp"
           component={ProfessionalSignUp}

@@ -26,7 +26,6 @@ const CompanySignUpScreen = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
 
-
   const [companyName, setCompanyName] = useState("");
   const [location, setLocation] = useState("");
   const [feild, setFeild] = useState("");
@@ -47,6 +46,7 @@ const CompanySignUpScreen = () => {
       feild: feild,
       companySize: companySize,
       description: description,
+      email: auth.currentUser.email,
     });
   };
   let [fontsLoaded] = useFonts({
@@ -67,11 +67,59 @@ const CompanySignUpScreen = () => {
           <View style={styles.inner}>
             <Text style={styles.h1}>Company Sign Up</Text>
             <Text style={styles.h2}>Please enter the information below</Text>
-            <CustomInput image={userImage} placeholder="NAME" type="text" value={companyName} setValue={setCompanyName}/>
-            <CustomDropDown image={cityImage} textInputValue="CITY" type="text" value={location} setValue={setLocation} />
-            <CustomDropDown image={clubImage} textInputValue="FIELD" type="text" value={feild} setValue={setFeild}/>
-            <CustomDropDown image={clubImage} textInputValue="COMPANY SIZE" type="text"  value={companySize} setValue={setCompanySize} />
-            <CustomInput image={clubImage} placeholder="COMPANY DESRCRIPTION" type="text" value={description} setValue={setDescription}/>
+            <CustomInput
+              image={userImage}
+              placeholder="NAME"
+              type="text"
+              value={companyName}
+              setValue={setCompanyName}
+            />
+            <CustomDropDown
+              image={cityImage}
+              textInputValue="CITY"
+              type="text"
+              value={location}
+              setValue={setLocation}
+              options={[
+                "Toronto",
+                "London",
+                "Calgary",
+                "Montreal",
+                "Ottawa",
+                "Other",
+              ]}
+            />
+            <CustomDropDown
+              image={clubImage}
+              textInputValue="FIELD"
+              type="text"
+              value={feild}
+              setValue={setFeild}
+              options={[
+                "Engineering",
+                "Medicine",
+                "Law",
+                "Education",
+                "Business",
+                "Science",
+                "Other",
+              ]}
+            />
+            <CustomDropDown
+              image={clubImage}
+              textInputValue="COMPANY SIZE"
+              type="text"
+              value={companySize}
+              setValue={setCompanySize}
+              options={["1-10", "10-50", "50-100", "100-1000", "1000+"]}
+            />
+            <CustomInput
+              image={clubImage}
+              placeholder="COMPANY DESRCRIPTION"
+              type="text"
+              value={description}
+              setValue={setDescription}
+            />
             <CustomButton
               text="SIGN UP"
               onPress={onSignUpPressed}

@@ -27,24 +27,20 @@ import { useNavigation } from "@react-navigation/native";
 import { getDatabase, ref, onValue, set } from "firebase/database";
 import { auth } from "../../../../firebase";
 
-
 const StudentSignUp = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
 
-//user info to send to database
-const [name, setName] = useState("");
-const [title, setTitle] = useState("");
-const [major, setMajor] = useState("");
-const [minor, setMinor] = useState("");
-const [school, setSchool] = useState("");
-const [location, setLocation] = useState("");
-const [experience, setExperience] = useState("");
-const [interest, setInterest] = useState("");
-const [projectPreference, setProjectPreference] = useState("");
-
-
-
+  //user info to send to database
+  const [name, setName] = useState("");
+  const [title, setTitle] = useState("");
+  const [major, setMajor] = useState("");
+  const [minor, setMinor] = useState("");
+  const [school, setSchool] = useState("");
+  const [location, setLocation] = useState("");
+  const [experience, setExperience] = useState("");
+  const [interest, setInterest] = useState("");
+  const [projectPreference, setProjectPreference] = useState("");
 
   const onLoginPressed = () => {
     navigation.navigate("SignIn");
@@ -53,21 +49,17 @@ const [projectPreference, setProjectPreference] = useState("");
     Prompt_500Medium,
   });
 
-  const onSignUpPressed = () => {
-    navigation.navigate("ProjectSearchPage");
+  const onNextPressed = () => {
+    navigation.navigate("StudentSignUp2");
     const database = getDatabase();
     const reference = ref(database, "Users/" + auth.currentUser.uid);
-    set(reference, {
-      accountType: "individualProfessional",
+    update(reference, {
+      accountType: "Student",
       name: name,
-      school:school,
-      title:title,
-      experience:experience,
-      interest:interest,
-      location: location,
-      projectPreference: projectPreference,
-      major:major,
-      minor:minor,
+      major: major,
+      minor: minor,
+      school: school,
+      email: auth.currentUser.email,
     });
   };
 
@@ -81,31 +73,71 @@ const [projectPreference, setProjectPreference] = useState("");
       style={styles.container}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <ScrollView Style={styles.ScrollView}>
-        <View style={styles.inner}>
-          <Text style={styles.h1}>Student Signup</Text>
-          <Text style={styles.h2}>Please enter the information below</Text>
-          <CustomInput image={userImage} placeholder="NAME" value={name} setValue={setName} />
-          <CustomDropDown image={Book} textInputValue="MAJOR"  value={major} setValue={setMajor} />
-          <CustomDropDown image={Book} textInputValue="MINOR"  value={minor} setValue={setMinor} />
-          <CustomDropDown image={schoolImage} textInputValue="SCHOOL" value={school} setValue={setSchool}  />
-          <CustomDropDown image={cityImage} textInputValue="CITY"  value={location} setValue={setLocation} />
-          <CustomDropDown image={clubImage} textInputValue="WORK/CLUB EXPERIENCE"  value={experience} setValue={setExperience}  />
-          <CustomDropDown image={Like} textInputValue="INTERESTS"  value={interest} setValue={setInterest}  />
-          <CustomInput image={Search} placeholder="PROJECT PREFERENCE"  value={projectPreference} setValue={setProjectPreference} />
-          <CustomButton
-                  text="SIGN UP"
-                  onPress={onSignUpPressed}
-                  style={{ padding: 30, alignSelf: "center" }}
-                />
-          <CustomButton
-            text="Already have an account? Sign In"
-            onPress={onLoginPressed}
-            type="TERTIARY"
-            style={{ padding: 10, alignSelf: "center" }}
-          />
-        </View>
-      </ScrollView>
+        <ScrollView Style={styles.ScrollView}>
+          <View style={styles.inner}>
+            <Text style={styles.h1}>Student Signup</Text>
+            <Text style={styles.h2}>Please enter the information below</Text>
+            <CustomInput
+              image={userImage}
+              placeholder="NAME"
+              value={name}
+              setValue={setName}
+            />
+            <CustomDropDown
+              image={Book}
+              textInputValue="MAJOR"
+              value={major}
+              setValue={setMajor}
+              options={[
+                "Business",
+                "Pre-Med",
+                "Social Sciences",
+                "Sciences",
+                "Engineering",
+                "Computer Science",
+                "Other",
+              ]}
+            />
+            <CustomDropDown
+              image={Book}
+              textInputValue="MINOR"
+              value={minor}
+              setValue={setMinor}
+              options={[
+                "Business",
+                "Pre-Med",
+                "Social Sciences",
+                "Sciences",
+                "Engineering",
+                "Computer Science",
+                "Other",
+              ]}
+            />
+            <CustomDropDown
+              image={schoolImage}
+              textInputValue="SCHOOL"
+              value={school}
+              setValue={setSchool}
+              options={[
+                "Western University",
+                "Univeristy of Toronto",
+                "University of Waterloo",
+                "Other",
+              ]}
+            />
+            <CustomButton
+              text="NEXT"
+              onPress={onNextPressed}
+              style={{ padding: 30, alignSelf: "center" }}
+            />
+            <CustomButton
+              text="Already have an account? Sign In"
+              onPress={onLoginPressed}
+              type="TERTIARY"
+              style={{ padding: 10, alignSelf: "center" }}
+            />
+          </View>
+        </ScrollView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
@@ -144,6 +176,5 @@ const styles = StyleSheet.create({
     color: "#0F6BAC",
   },
 });
-
 
 export default StudentSignUp;

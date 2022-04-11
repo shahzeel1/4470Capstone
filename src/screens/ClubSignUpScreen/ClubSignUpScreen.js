@@ -28,14 +28,13 @@ const ClubSignUpScreen = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
 
-//user info to send to database
+  //user info to send to database
   const [companyName, setCompanyName] = useState("");
   const [location, setLocation] = useState("");
   const [feild, setFeild] = useState("");
   const [description, setDescription] = useState("");
   const [faculty, setFaculty] = useState("");
   const [school, setSchool] = useState("");
-
 
   const onLoginPressed = () => {
     navigation.navigate("SignIn");
@@ -50,8 +49,9 @@ const ClubSignUpScreen = () => {
       location: location,
       feild: feild,
       faculty: faculty,
-      school:school,
+      school: school,
       description: description,
+      email: auth.currentUser.email,
     });
   };
   let [fontsLoaded] = useFonts({
@@ -72,39 +72,74 @@ const ClubSignUpScreen = () => {
           <View style={styles.inner}>
             <Text style={styles.h1}>Club Sign Up</Text>
             <Text style={styles.h2}>Please enter the information below</Text>
-            <CustomInput image={userImage} placeholder="NAME" value={companyName} setValue={setCompanyName}/>
+            <CustomInput
+              image={userImage}
+              placeholder="NAME"
+              value={companyName}
+              setValue={setCompanyName}
+            />
             <CustomDropDown
               image={cityImage}
               textInputValue="CITY"
-              options={["London", "Toronto"]}
-              value={location} 
-              setValue={setLocation} 
+              options={[
+                "Toronto",
+                "London",
+                "Calgary",
+                "Montreal",
+                "Ottawa",
+                "Other",
+              ]}
+              value={location}
+              setValue={setLocation}
             />
             <CustomDropDown
               image={schoolImage}
               textInputValue="SCHOOL"
-              options={["Western University", "Univeristy of Toronto"]}
-              value={school} 
-              setValue={setSchool} 
+              options={[
+                "Western University",
+                "Univeristy of Toronto",
+                "University of Waterloo",
+                "Other",
+              ]}
+              value={school}
+              setValue={setSchool}
             />
             <CustomDropDown
               image={clubImage}
               textInputValue="FACULTY"
-              options={["Science", "Business", "Engineering"]}
-              value={faculty} 
-              setValue={setFaculty} 
+              options={[
+                "Engineering",
+                "Medicine",
+                "Law",
+                "Education",
+                "Business",
+                "Science",
+                "Other",
+              ]}
+              value={faculty}
+              setValue={setFaculty}
             />
             <CustomDropDown
               image={clubImage}
               textInputValue="FIELD"
-              options={["Software Engineer", "Medicine"]}
-              value={feild} 
-              setValue={setFeild} 
+              options={[
+                "Engineering",
+                "Medicine",
+                "Law",
+                "Education",
+                "Business",
+                "Science",
+                "Other",
+              ]}
+              value={feild}
+              setValue={setFeild}
             />
-            <CustomInput image={clubImage}  
-              value={description} 
-              setValue={setDescription}  
-              placeholder="CLUB DESRCRIPTION" />
+            <CustomInput
+              image={clubImage}
+              value={description}
+              setValue={setDescription}
+              placeholder="CLUB DESRCRIPTION"
+            />
             <CustomButton
               text="SIGN UP"
               onPress={onSignUpPressed}

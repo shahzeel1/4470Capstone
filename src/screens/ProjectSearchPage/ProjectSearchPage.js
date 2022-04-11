@@ -24,9 +24,9 @@ import CustomButton from "../../components/CustomButton";
 import { useFonts, Prompt_500Medium } from "@expo-google-fonts/prompt";
 import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
-import { getDatabase, ref, onValue, set, get } from "firebase/database";
+import { getDatabase, ref, onValue } from "firebase/database";
 import { render } from "react-dom";
-
+import { WaitingfortheSunrise_400Regular } from "@expo-google-fonts/dev";
 const ProjectSearchPage = () => {
   // const [waitingForData, setWaitingForData] = React.useState(true);
   const [projectsPrint, setProjectsPrint] = useState("");
@@ -88,6 +88,7 @@ const ProjectSearchPage = () => {
   //connect db
 
   //get all project in a an array of SearchProjectDisplay
+  let projects = getData();
 
   return (
     <KeyboardAvoidingView
@@ -99,7 +100,7 @@ const ProjectSearchPage = () => {
       </View>
 
       <ScrollView Style={styles.scrollView}>
-        {getData()}
+        {projects}
 
         <Text> </Text>
         <Text> </Text>
