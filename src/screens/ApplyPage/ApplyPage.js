@@ -39,8 +39,9 @@ const ApplyPage = () => {
   const [applicantCity, setApplicantCity] = useState("");
   const [applicantMessage, setApplicantMessage] = useState("");
 
-  //get from db
+  //get from db and get 
   var roleOptions = ['Software Engineer', 'media'];
+  var projectName = "get from db";
   const navigation = useNavigation();
   const onForgotPasswordPressed = () => {
     navigation.navigate("ForgotPassword");
@@ -48,6 +49,7 @@ const ApplyPage = () => {
   const onApplyPressed = () => {
     navigation.navigate("ProjectSearchPage");
     const database = getDatabase();
+    // add project name after projects
     const reference = ref(database, "Projects/" + auth.currentUser.uid);
     set(reference, {
       userId:auth.currentUser.uid,
@@ -182,4 +184,3 @@ const ApplyPage = () => {
   });
   
 export default ApplyPage;
-
