@@ -27,6 +27,8 @@ import AppLoading from "expo-app-loading";
 import { useNavigation } from "@react-navigation/native";
 import CustomInput from "../../components/CustomInput";
 import CustomDropDown from "../../components/CustomDropDown";
+import { getDatabase, ref, onValue, set } from "firebase/database";
+import { auth } from "../../../firebase";
 
 
 const CreateProject = () => {
@@ -53,7 +55,27 @@ const CreateProject = () => {
     navigation.navigate("ForgotPassword");
   };
   const onCreatePressed = () => {
-    navigation.navigate("ProjectPage");
+    navigation.navigate("ProjectSearchPage");
+    const database = getDatabase();
+    // add project name after projects and way to create project identifier or make project name unique
+    const reference = ref(database, "Projects/" + auth.currentUser.uid);
+    set(reference, {
+      userId:auth.currentUser.uid,
+      projectName : projectName,
+      projectType: projectType,
+      projectDuration: projectDuration,
+      projectSchool: projectSchool,
+      projectCity: projectCity,
+      projectIndustry:projectIndustry,
+      projectTech : projectTech,
+      projectFaculty: projectFaculty,
+      projectDescription: projectDescription,
+      projectRoles: projectRoles,
+      projectNotes: projectNotes,
+      projectSponsorship: projectSponsorship,
+      projectBadge: projectBadge,
+      projectImage: projectImage,
+    });
   };
 
   const onBackPressed = () => {
@@ -110,6 +132,7 @@ const CreateProject = () => {
             options =  {projectDurationOptions}
             value={projectDuration}
             setValue={setProjectDuration}
+            styleSelect = "createPage"
           />
           <CustomInput
             image={school}
@@ -241,3 +264,4 @@ const CreateProject = () => {
   });
   
 export default CreateProject;
+
