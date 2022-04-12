@@ -37,7 +37,7 @@ import ProfileBadgeDisplay from  "../../components/ProfileBadgeDisplay";
 
 const ProjectPage = () => {
   //temporary till we can see if user is a org or not or viewer
-  const isProjectOwner = false;
+  const isProjectOwner = true;
   const isApplied = true;
   var projectName = "facebook project 1";
   var projectOrganization = "Facebook";
@@ -166,12 +166,6 @@ const ProjectPage = () => {
                 </Text>
               </Pressable>
             </View>
-            <CustomButton
-            text="Applicants"
-            onPress={onApplicantsPessed}
-            type="SECONDARY"
-            style={{ padding: 10, alignSelf: "center" , marginTop:15,}}
-          />
           </View>
 
 
@@ -279,7 +273,12 @@ const ProjectPage = () => {
                 </Text>
               </Pressable>
             </View>
-
+            <CustomButton
+            text="Applicants"
+            onPress={onApplicantsPessed}
+            type="SECONDARY"
+            style={{ padding: 10, alignSelf: "center" , marginTop:15,}}
+          />
           </View>
 
 
