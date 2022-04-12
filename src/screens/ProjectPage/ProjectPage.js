@@ -39,7 +39,6 @@ const ProjectPage = () => {
   //temporary till we can see if user is a org or not or viewer
   const isProjectOwner = false;
   const isApplied = true;
-
   var projectName = "facebook project 1";
   var projectOrganization = "Facebook";
   var projectLocation = "London, ON";
@@ -79,6 +78,11 @@ const ProjectPage = () => {
   const onMyProjectsPage = () => {
     navigation.navigate("MyProjectsPage");
   };
+  const onApplicantsPessed = () => {
+    navigation.navigate("Applicants");
+
+  };
+
 
   let [fontsLoaded] = useFonts({
     Prompt_500Medium,
@@ -162,7 +166,12 @@ const ProjectPage = () => {
                 </Text>
               </Pressable>
             </View>
-
+            <CustomButton
+            text="Applicants"
+            onPress={onApplicantsPessed}
+            type="SECONDARY"
+            style={{ padding: 10, alignSelf: "center" , marginTop:15,}}
+          />
           </View>
 
 
@@ -512,4 +521,5 @@ const styles = StyleSheet.create({
 });
 
 export default ProjectPage;
+
 
