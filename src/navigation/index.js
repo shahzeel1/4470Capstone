@@ -24,6 +24,9 @@ import SignUpScreenFirst from "../screens/SignUpScreenFirst";
 import StudentSignUp2 from "../screens/IndividualSignUpScreen/StudentSignUp2";
 import FacultySignUp2 from "../screens/IndividualSignUpScreen/FacultySignUpScreen2";
 import ProfessionalSignUp2 from "../screens/IndividualSignUpScreen/ProfessionalSignUpScreen2";
+import ProjectPage from "../screens/ProjectPage";
+import ApplyPage from "../screens/ApplyPage";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +51,8 @@ const Navigation = () => {
         <Stack.Screen name="FacultySignUp" component={FacultySignUp} />
         <Stack.Screen name="StudentSignUp2" component={StudentSignUp2} />
         <Stack.Screen name="FacultySignUp2" component={FacultySignUp2} />
+        <Stack.Screen name="ApplyPage" component={ApplyPage} />
+        <Stack.Screen name="ProjectsPage" component={ProjectPage} />
         <Stack.Screen
           name="ProfessionalSignUp2"
           component={ProfessionalSignUp2}
